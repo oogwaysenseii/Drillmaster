@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Provided by @fontsource-variable/inter, imported in app/layout.tsx */
+  --font-inter: "Inter Variable", "Inter";
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-ink-900 antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ------------------------------------------------------------------
+   SCROLL REVEAL
+   The content is ALWAYS in the HTML — only the animation is JS-driven,
+   so crawlers and no-JS users see everything. The `.js` class is set by
+   an inline script in <head> before first paint, so there's no flash of
+   hidden content and no flash of unstyled movement.
+   ------------------------------------------------------------------ */
+.reveal {
+  transition:
+    opacity 0.8s var(--ease-out-expo),
+    transform 0.8s var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js .reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.js .reveal-scale:not(.is-visible) {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+/* ------------------------------------------------------------------
+   HERO MEDIA TREATMENT
+   Values lifted from the live drillmaster.sk hero so the rebuild keeps the
+   same feel: the footage sits dark and slightly desaturated, then warms to
+   near-full colour and pushes in slightly when the panel is hovered.
+   Applied to the poster image AND the video so they look identical.
+   ------------------------------------------------------------------ */
+.hero-media {
+  filter: brightness(0.4) grayscale(30%);
+  transform: scale(1);
+  transition:
+    filter 0.8s cubic-bezier(0.2, 1, 0.2, 1),
+    transform 0.8s cubic-bezier(0.2, 1, 0.2, 1);
+  will-change: filter, transform;
+}
+.group:hover .hero-media {
+  filter: brightness(0.7) grayscale(0%);
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-media,
+  .group:hover .hero-media {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Thin animated underline used on section headings */
+@keyframes rule-in {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.rule {
+  transform-origin: left;
+}
+.is-visible .rule {
+  animation: rule-in 0.9s var(--ease-out-expo) 0.15s both;
+}
+
+/* ------------------------------------------------------------------
+   ACCESSIBILITY: honour the OS "reduce motion" setting.
+   Everything snaps to its final state — no movement at all.
+   ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js .reveal:not(.is-visible),
+  .js .reveal-scale:not(.is-visible) {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal,
+  .animate-slow-zoom,
+  .is-visible .rule {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Carousel: hide the scrollbar but keep native scrolling/swipe */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Layout helpers */
+.section {
+  @apply py-10;
+}
+.section-title {
+  @apply text-3xl font-extrabold uppercase tracking-tight md:text-4xl;
+}
+.lead {
+  @apply text-lg leading-relaxed text-ink-700;
+}
