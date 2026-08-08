@@ -60,7 +60,19 @@ export function ContactForm({
       const res = await fetch("/api/contact/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, phone, web }),
+        // `page` tells the office which page the lead came from — a form sent
+        // from /rezanie-otvorov/detva/ is a different conversation from one
+        // sent off the homepage. The server treats both fields as untrusted
+        // and prefers to resolve the path against known routes itself.
+        body: JSON.stringify({
+          email,
+          phone,
+          web,
+          page: {
+            path: window.location.pathname,
+            title: document.title,
+          },
+        }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));

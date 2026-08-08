@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { getService } from "@/data/services";
+import { getCity } from "@/data/cities";
+import { company } from "@/data/company";
 
 /**
  * Contact form endpoint — delivers the lead by e-mail via Resend.
@@ -55,6 +58,53 @@ function rateLimited(ip: string): boolean {
   return recent.length > MAX_PER_WINDOW;
 }
 
+/**
+ * Work out which page the form was sent from.
+ *
+ * Both values arrive in the request body, so both are attacker-controlled and
+ * neither can be dropped into an e-mail as-is. The path is therefore resolved
+ * against the routes we actually publish — when it matches, the label is built
+ * from our own data and cannot be forged. The browser title is only a fallback
+ * for pages we can't name (and is stripped of newlines, which would otherwise
+ * be a header-injection vector in the subject line).
+ */
+function describeSource(page: unknown): { label: string; url: string } {
+  const p = (page ?? {}) as Record<string, unknown>;
+  const rawPath = typeof p.path === "string" ? p.path : "";
+  const rawTitle = typeof p.title === "string" ? p.title : "";
+
+  // Only ever accept a same-site path — never a full URL from the body.
+  const path = /^\/[\w\-/]*$/.test(rawPath) ? rawPath : "/";
+  const url = `${company.url}${path}`;
+
+  const parts = path.split("/").filter(Boolean);
+
+  // /{service}/{city}/ and /{service}/
+  if (parts.length >= 1) {
+    const service = getService(parts[0]);
+    if (service) {
+      const city = parts[1] ? getCity(parts[1]) : undefined;
+      return {
+        label: city ? `${service.name} – ${city.name}` : service.name,
+        url,
+      };
+    }
+  }
+
+  if (parts.length === 0) return { label: "Domovská stránka", url };
+  if (parts[0] === "kontakt") return { label: "Kontakt", url };
+  if (parts[0] === "galeria") return { label: "Galéria", url };
+
+  // Unknown route: fall back to the browser title, sanitised.
+  const title = rawTitle
+    .replace(/[\r\n]+/g, " ")
+    .replace(/\s*\|\s*Drillmaster\s*$/i, "")
+    .trim()
+    .slice(0, 120);
+
+  return { label: title || path, url };
+}
+
 function clientIp(request: Request): string {
   const fwd = request.headers.get("x-forwarded-for");
   return (
@@ -78,7 +128,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Neplatný formát." }, { status: 400 });
   }
 
-  const { email, phone, web } = (body ?? {}) as Record<string, unknown>;
+  const { email, phone, web, page } = (body ?? {}) as Record<string, unknown>;
+  const source = describeSource(page);
 
   // ---- honeypot: silently accept ----
   if (typeof web === "string" && web.trim() !== "") {
@@ -119,7 +170,7 @@ export async function POST(request: Request) {
   if (!apiKey) {
     console.error(
       "[contact] RESEND_API_KEY is not set — lead NOT delivered:",
-      { email: emailStr, phone: phoneStr }
+      { email: emailStr, phone: phoneStr, page: source.label }
     );
     return NextResponse.json(
       { error: "Odoslanie zlyhalo. Zavolajte nám, prosím." },
@@ -132,12 +183,17 @@ export async function POST(request: Request) {
       from: FROM,
       to: [TO],
       replyTo: emailStr,
-      subject: "Nová žiadosť o cenovú ponuku",
+      // The page is in the subject so the office can triage from the inbox
+      // list without opening anything.
+      subject: `Nová žiadosť: ${source.label}`,
       text: [
         "Nová žiadosť o cenovú ponuku z webu drillmaster.sk",
         "",
-        `E-mail:  ${emailStr}`,
-        `Telefón: ${phoneStr}`,
+        `E-mail:   ${emailStr}`,
+        `Telefón:  ${phoneStr}`,
+        "",
+        `Stránka:  ${source.label}`,
+        `Odkaz:    ${source.url}`,
       ].join("\n"),
     });
 
@@ -147,7 +203,7 @@ export async function POST(request: Request) {
       console.error("[contact] Resend rejected the send:", error, {
         from: FROM,
         to: TO,
-        lead: { email: emailStr, phone: phoneStr },
+        lead: { email: emailStr, phone: phoneStr, page: source.label, url: source.url },
       });
       return NextResponse.json(
         { error: "Odoslanie zlyhalo. Zavolajte nám, prosím." },
@@ -158,7 +214,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, id: data?.id });
   } catch (err) {
     console.error("[contact] delivery threw:", err, {
-      lead: { email: emailStr, phone: phoneStr },
+      lead: { email: emailStr, phone: phoneStr, page: source.label, url: source.url },
     });
     return NextResponse.json(
       { error: "Odoslanie zlyhalo. Zavolajte nám, prosím." },
