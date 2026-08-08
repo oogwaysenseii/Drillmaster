@@ -12,6 +12,11 @@ import { tierCopy, type MeterLevel } from "@/data/tiers";
  * not drift with the brand palette.
  */
 
+// NOTE on the amber: #E0A800 is 2.15:1 against white, under the 3:1 WCAG asks
+// for graphical objects. It is kept deliberately — a darker amber tested worse
+// in practice, reading as a second red rather than a middle state, and telling
+// the three levels apart is the whole point of the meter. The text label on
+// every dot is what carries the meaning for anyone who can't use the colour.
 const DOT: Record<MeterLevel, { className: string; word: string }> = {
   1: { className: "bg-[#16A34A]", word: "dobrá" },
   2: { className: "bg-[#E0A800]", word: "stredná" },

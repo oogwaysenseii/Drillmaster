@@ -8,7 +8,12 @@ export function Breadcrumbs({ items }: { items: { name: string; url: string }[] 
           <li key={item.url} className="flex items-center gap-1">
             {i > 0 && <span className="text-ink-200">/</span>}
             {i < items.length - 1 ? (
-              <Link href={item.url} className="hover:text-brand">{item.name}</Link>
+              <Link
+                href={item.url}
+                className="-my-1.5 inline-block py-1.5 hover:text-brand"
+              >
+                {item.name}
+              </Link>
             ) : (
               <span className="text-ink-900 font-medium">{item.name}</span>
             )}

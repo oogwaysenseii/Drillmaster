@@ -26,6 +26,10 @@ export function Logo({
       alt={`${company.name} – ${company.tagline}`}
       width={1367}
       height={525}
+      // Without `sizes`, next/image picks a candidate from the declared width
+      // and fetches a 1367px asset for a slot that is never wider than ~200px —
+      // on every page, twice (header and footer).
+      sizes="(max-width: 768px) 160px, 220px"
       priority={priority}
       className="h-full w-auto"
     />

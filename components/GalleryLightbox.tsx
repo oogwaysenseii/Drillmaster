@@ -32,6 +32,7 @@ export function GalleryLightbox({
   onNavigate: (i: number) => void;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const restoreRef = useRef<HTMLElement | null>(null);
   const open = index !== null;
 
@@ -53,9 +54,27 @@ export function GalleryLightbox({
     document.body.style.overflow = "hidden";
 
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-      else if (e.key === "ArrowRight") go(1);
-      else if (e.key === "ArrowLeft") go(-1);
+      if (e.key === "Escape") return onClose();
+      if (e.key === "ArrowRight") return go(1);
+      if (e.key === "ArrowLeft") return go(-1);
+
+      // Focus trap. Without it Tab walks out of the dialog and into the page
+      // behind, where the caret is invisible under the backdrop — a keyboard
+      // user has no way back. Same implementation as CityServicePicker.
+      if (e.key !== "Tab") return;
+      const f = panelRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled])'
+      );
+      if (!f || f.length === 0) return;
+      const first = f[0];
+      const last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     document.addEventListener("keydown", onKey);
 
@@ -75,6 +94,7 @@ export function GalleryLightbox({
 
   return (
     <div
+      ref={panelRef}
       role="dialog"
       aria-modal="true"
       aria-label={item.alt}
@@ -129,7 +149,7 @@ export function GalleryLightbox({
           />
         </div>
 
-        <figcaption className="mt-5 w-full max-w-2xl text-center">
+        <span className="mt-5 w-full max-w-2xl text-center">
           <p className="text-lg font-bold text-white">{item.caption}</p>
           <p className="mt-1.5 text-sm leading-relaxed text-white/70">
             {item.alt}
@@ -158,7 +178,7 @@ export function GalleryLightbox({
               {index + 1} / {items.length}
             </span>
           </div>
-        </figcaption>
+        </span>
       </figure>
     </div>
   );

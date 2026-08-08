@@ -14,11 +14,12 @@ import { TierDots, MeterLegend } from "@/components/TierMeter";
  * Covers all 71 Slovak district seats, so tiles are compact — a region can hold
  * up to 13 towns and they need to read as a scannable list, not a wall of cards.
  *
- * SEO note: only the ACTIVE region's towns are in the DOM at a time, so the
- * hidden ones aren't crawlable from here. That's fine — published cities are
- * also linked from the footer and listed in the sitemap, which is where
- * crawlers pick them up. The default tab is the home region, so the most
- * important towns are present in the static HTML.
+ * SEO note: every region's towns are in the DOM; the inactive panels are
+ * hidden rather than unmounted. Rendering only the active tab used to mean a
+ * page linked to 13 towns and no others, and once the footer stopped listing
+ * cities that left 116 of 142 city pages with a single inbound internal link.
+ * Keeping all 71 in the markup costs about 7 kB gzipped per page and makes
+ * every city page reachable from every other one.
  */
 export function Locations({
   service = "jadrove-vrtanie",
@@ -80,9 +81,6 @@ export function Locations({
     return () => window.removeEventListener("hashchange", onHash);
   }, [active]);
 
-  const list = citiesInRegion(current);
-  const region = active.find((r) => r.slug === current);
-
   return (
     <section className="section scroll-mt-24" id="kde-posobime" ref={sectionRef}>
       <div className="container">
@@ -137,17 +135,31 @@ export function Locations({
             />
           </div>
 
-          {/* Towns in the selected region */}
+          {/* Towns — EVERY region is rendered, inactive ones hidden.
+              Rendering only the active tab meant a page's static HTML linked
+              to 13 towns and no others, so 116 of 142 city pages ended up with
+              a single inbound internal link. `hidden` keeps the links in the
+              markup (crawlable, and there with JS off) while taking the
+              inactive panels out of the tab order and the accessibility tree. */}
+          <div className="order-1 lg:order-2">
+          {active.map((r) => (
           <div
-            id={`region-${current}`}
+            key={r.slug}
+            id={`region-${r.slug}`}
             role="tabpanel"
-            aria-label={region?.name}
+            aria-label={r.name}
+            // Both: the attribute takes the panel out of the accessibility
+            // tree and the tab order, the class actually hides it — a `grid`
+            // display class from the author stylesheet beats the UA rule for
+            // [hidden], so the attribute alone leaves the panel on screen.
+            hidden={r.slug !== current}
             // Borders rather than gap-px + background: an incomplete last row
             // would otherwise render phantom grey cells.
-            // Fewer columns than before — this now sits in a half-width column.
-            className="order-1 grid grid-cols-2 border-l border-t border-ink-200 sm:grid-cols-3 lg:order-2 lg:grid-cols-3 xl:grid-cols-4"
+            className={`${
+              r.slug === current ? "grid" : "hidden"
+            } grid-cols-2 border-l border-t border-ink-200 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4`}
           >
-          {list.map((c) => {
+          {citiesInRegion(r.slug).map((c) => {
             const live = c.content !== null;
             return live ? (
               <Link
@@ -205,6 +217,8 @@ export function Locations({
               </div>
             );
           })}
+          </div>
+          ))}
           </div>
         </div>
 

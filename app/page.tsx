@@ -62,9 +62,9 @@ export default function HomePage() {
                 <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.35em] text-brand">
                   <span className="h-px w-8 bg-brand" />O nás
                 </p>
-                <h1 className="section-title mt-5 text-balance">
+                <h2 className="section-title mt-5 text-balance">
                   {homepage.intro.heading}
-                </h1>
+                </h2>
                 <div className="rule mt-7 h-[2px] w-20 bg-brand" />
                 <p className="mt-7 text-lg leading-relaxed text-ink-700">
                   {homepage.intro.body}

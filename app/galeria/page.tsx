@@ -92,14 +92,14 @@ export default function GalleryPage() {
                         {photoCity.name}
                       </span>
                     )}
-                    <figcaption className="absolute inset-x-0 bottom-0 p-5">
+                    <span className="absolute inset-x-0 bottom-0 p-5">
                       <span className="block text-[10px] font-bold uppercase tracking-[0.22em] text-brand opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                         {service?.name}
                       </span>
                       <span className="mt-1 block font-semibold leading-snug text-white">
                         {item.caption}
                       </span>
-                    </figcaption>
+                    </span>
                   </Link>
                 </Reveal>
               );

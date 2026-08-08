@@ -17,6 +17,17 @@ export function Hero() {
   return (
     // Flex row (not a grid) so the panels can resize against each other.
     <section className="relative flex flex-col md:flex-row">
+      {/*
+        The visible headings at the top of the homepage are the two hero panels
+        and the trust band, all h2 — which put three h2s before the page's h1
+        further down. The document's main heading belongs first, and the hero
+        has no visible title to carry it, so it lives here for assistive tech
+        and crawlers. The intro section's heading is an h2.
+      */}
+      <h1 className="sr-only">
+        Drillmaster – jadrové vŕtanie a rezanie stavebných otvorov diamantovou
+        technikou
+      </h1>
       {services.map((s, i) => {
         const media = heroMedia[s.slug];
         return (

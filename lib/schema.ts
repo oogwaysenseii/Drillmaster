@@ -28,6 +28,9 @@ export function businessSchema(city?: City) {
     email: company.email,
     priceRange: "€€",
     hasMap: company.hasMap,
+    // Google's local rich results want both; the assets already exist.
+    logo: `${company.url}/brand/drillmaster-logo.png`,
+    image: `${company.url}/og/og-default.jpg`,
     ...(sameAs.length ? { sameAs } : {}),
     address: {
       "@type": "PostalAddress",

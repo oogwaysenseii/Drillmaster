@@ -48,7 +48,10 @@ export function cityServiceMetadata(
     title: `${service.name} ${city.name}`,
     description: `${service.name} ${city.nameLocative} a okolí. ${hook} Cenová ponuka zadarmo, volajte ${company.phoneDisplay}.`,
     alternates: { canonical: `/${service.slug}/${city.slug}/` },
-    openGraph: { title: `${service.name} ${city.name} | ${company.name}` },
+    openGraph: {
+      title: `${service.name} ${city.name} | ${company.name}`,
+      images: [{ url: `/og/og-${service.slug}.jpg`, width: 1200, height: 630 }],
+    },
   };
 }
 

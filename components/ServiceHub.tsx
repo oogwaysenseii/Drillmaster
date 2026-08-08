@@ -23,8 +23,13 @@ export function serviceHubMetadata(slug: string): Metadata {
   if (!service) return {};
   return {
     title: service.page?.h1 ?? service.title,
-    description: `${service.summary} Pôsobíme po celom Slovensku. Expresné termíny, cenová ponuka zadarmo. Volajte ${company.phoneDisplay}.`,
+    // service.summary alone is already ~110 chars, so keep the tail short.
+    description: `${service.summary} Po celom Slovensku, cenová ponuka zadarmo.`,
     alternates: { canonical: `/${service.slug}/` },
+    openGraph: {
+      title: service.page?.h1 ?? service.title,
+      images: [{ url: `/og/og-${service.slug}.jpg`, width: 1200, height: 630 }],
+    },
   };
 }
 

@@ -37,7 +37,7 @@ export function PriceTeaser({
       </p>
       <Link
         href="/cennik/"
-        className="mt-4 inline-flex items-center gap-2 font-bold text-brand hover:underline"
+        className="-my-1.5 mt-4 inline-flex items-center gap-2 py-1.5 font-bold text-brand hover:underline"
       >
         Zobraziť celý cenník
         <span aria-hidden="true">→</span>

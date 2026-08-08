@@ -3,6 +3,7 @@ import { company } from "@/data/company";
 import { services } from "@/data/services";
 import { Logo } from "@/components/Logo";
 import { icons } from "@/components/Icons";
+import { MobileMenu } from "@/components/MobileMenu";
 
 /** Nav link with an animated brand underline. */
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
@@ -47,7 +48,7 @@ export function Header() {
           <div className="flex items-center gap-6">
             <a
               href={`mailto:${company.email}`}
-              className="flex items-center gap-2 text-ink-700 transition-colors duration-300 hover:text-brand"
+              className="-my-2 flex items-center gap-2 py-2 text-ink-700 transition-colors duration-300 hover:text-brand"
             >
               <icons.mail className="h-3.5 w-3.5 text-brand" />
               {company.email}
@@ -55,7 +56,7 @@ export function Header() {
             <span className="h-3 w-px bg-ink-200" />
             <a
               href={`tel:${company.phone}`}
-              className="flex items-center gap-2 font-bold text-ink-900 transition-colors duration-300 hover:text-brand"
+              className="-my-2 flex items-center gap-2 py-2 font-bold text-ink-900 transition-colors duration-300 hover:text-brand"
             >
               <icons.phone className="h-3.5 w-3.5 text-brand" />
               {company.phoneDisplay}
@@ -89,14 +90,17 @@ export function Header() {
             </Link>
           </nav>
 
-          {/* Mobile call button */}
-          <a
-            href={`tel:${company.phone}`}
-            className="flex items-center gap-2 bg-brand px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white md:hidden"
-          >
-            <icons.phone className="h-3.5 w-3.5" />
-            Zavolať
-          </a>
+          {/* Mobile: call is the primary action, menu sits beside it */}
+          <div className="flex items-center gap-2 md:hidden">
+            <a
+              href={`tel:${company.phone}`}
+              className="flex items-center gap-2 bg-brand px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white"
+            >
+              <icons.phone className="h-3.5 w-3.5" />
+              Zavolať
+            </a>
+            <MobileMenu />
+          </div>
         </div>
       </header>
     </>

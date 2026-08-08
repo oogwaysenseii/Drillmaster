@@ -29,7 +29,7 @@ function FootLink({
   external?: boolean;
 }) {
   const cls =
-    "group inline-flex items-center gap-2 text-sm text-ink-700 transition-colors duration-300 hover:text-brand";
+    "group -my-1.5 inline-flex items-center gap-2 py-1.5 text-sm text-ink-700 transition-colors duration-300 hover:text-brand";
   const inner = (
     <>
       <span className="h-px w-0 bg-brand transition-all duration-300 group-hover:w-3" />

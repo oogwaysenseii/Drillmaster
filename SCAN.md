@@ -1,173 +1,143 @@
-# Drillmaster — deep scan #2
+# Drillmaster — deep scan #4
 
-Run against a production build, 8 Aug 2026, after the cenník page, the full
-contact form, the footer/region change and the city service dialog. 148 pages
-crawled and parsed; six page types profiled in headless Chromium at 1440px and
-390px. Every number is measured.
+Production build, 8 Aug 2026, after the internal-linking fix, share images,
+mobile menu, skip link and the asset work. 148 pages crawled and parsed, six
+page types profiled in headless Chromium at 1440px and 390px.
 
-**Overall: 8 / 10** — up from 7.5. The launch blockers are gone: the contact
-form delivers, the map is live, the endpoint is rate-limited. Two things moved
-the wrong way, both side effects of changes made since the first scan, and both
-are cheap to reverse.
+**Overall: 9 / 10** — up from 8. (Updated after the FAQ pass: all 71 towns now
+carry local questions, and the three long meta descriptions, the heading order
+and the small tap targets are fixed.) Everything from the last ranked list is
+now done, and the structural weaknesses that persisted across three scans —
+orphaned city pages, no share images, no mobile navigation — are gone.
 
-| Area | Scan #1 | Now |
+| Area | #1 | #2 | #3 | Now |
+|---|---|---|---|---|
+| Build & architecture | 9 | 9 | 9 | 9 |
+| Technical SEO | 8 | 7 | 7.5 | **9.5** |
+| Structured data | 9 | 9 | 9 | **9.5** |
+| Content differentiation | 6 | 5.5 | 6.5 | **7.5** |
+| Performance | 8.5 | 8.5 | 8.5 | **9** |
+| Accessibility | 8 | 8 | 7.5 | **8.5** |
+| Launch readiness | 4 | 9 | 9 | 9 |
+
+---
+
+## Fixed since scan #3
+
+**Internal linking — solved.** Every region's towns are now in the markup with
+inactive panels hidden, rather than only the active tab.
+
+| | #3 | now |
 |---|---|---|
-| Build & architecture | 9 | 9 |
-| Technical SEO | 8 | **7** |
-| Structured data | 9 | 9 |
-| Content differentiation | 6 | **5.5** |
-| Performance | 8.5 | 8.5 |
-| Accessibility | 8 | 8 |
-| Launch readiness | 4 | **9** |
+| city pages with 1 inbound link | 116 | **0** |
+| lowest inbound on any city page | 1 | **73** |
+| avg internal links per page | 20 | **77** |
+| orphans | 0 | 0 |
+
+**Share images.** `og:image` missing on 148 pages → **0**. Three 1200×630
+images rendered from the real logo and photos: a default plus one per service,
+so a shared drilling page and a shared cutting page look different.
+`summary_large_image` set for Twitter/X.
+
+**Mobile navigation.** Phones previously had a call button and no way to reach
+any page. There is now a slide-in menu with both services, the cenník, the
+gallery, a contact CTA and the NAP block — focus trapped, Escape closes, closes
+on navigation, portalled out of the header (whose `backdrop-blur` was clipping
+it to a 64px strip).
+
+**Assets.** Hero videos re-encoded at 960px: 2.32 MB → 1.05 MB, SSIM 0.95–0.97,
+indistinguishable at display size behind the filter treatment. Homepage
+transfer 1,357 kB → **815 kB**. Logo now ships a 256px variant instead of
+1367px; images oversized by more than 2.2× went from 2 per page to **0**, and
+images missing `sizes` from 296 to **0**.
+
+**Also done:** skip link on every page (verified as the first Tab stop), gallery
+lightbox now traps focus, `logo`/`image` added to the business schema,
+`lastmod` on all 148 sitemap URLs, invalid `figcaption` markup removed.
 
 ---
 
-## What got fixed since scan #1
+## Content and the remaining trade-off
 
-The contact form delivers through Resend instead of silently dropping every
-lead — that alone was the worst problem on the site. It now also carries the
-page the enquiry came from, and the long form on `/kontakt/` adds name,
-service, city and a message. `/api/contact/` is rate-limited to 5 submissions
-per IP per 10 minutes, caps the payload at 4 kB, and logs the exact composed
-message when delivery fails, so a failed send is recoverable rather than lost.
+**Local FAQs — done, 71 of 71 towns.** Two questions per town, each written
+against that town's own building-stock copy: panel estates, historic and UNESCO
+cores, industrial halls, spa and hotel objects, mountain access, agricultural
+buildings. Measured effect:
 
-The map works in production. Two separate causes, both now cleared: billing was
-not enabled on the Cloud project, and the key's referrer restriction did not
-cover the site's subpages. The loader race that produced
-`n is not a constructor` is fixed and covered by a reproducible test.
+| | before FAQs | after |
+|---|---|---|
+| shared text (sentence on ≥7 pages) | 41% | **34%** |
+| unique characters per city page | 2,052 | **2,553** |
+| city↔city vocabulary overlap | 68% | **57%** |
+| avg article words | 456 | **530** |
 
-`/cennik/` is live with both price tables, and the price data is typed and
-derived, so the "od X €" figures on service and city pages cannot drift from
-the tables.
+**These need your fact-check.** They are written from public knowledge about
+each town plus what your own copy already says, and never claim a job you have
+done — but you know these places and I do not. The claims most worth checking
+are the district names (Rúbanisko, Baničné, Klačno, Sásová, Fončorda), the
+industry references (Púchov gumárne, Partizánske obuvníctvo, Poltár sklárstvo,
+Detva strojárstvo) and the UNESCO/pamiatková zóna statements for Banská
+Štiavnica, Bardejov, Levoča and Trnava.
 
----
+**The amber meter dot fails WCAG contrast, deliberately.** `#E0A800` is 2.15:1
+against white, under the 3:1 for graphical objects. A darker amber was tried
+and reverted: at 5.02:1 it passed the check but read as a second red — amber
+against red measures only 2.58:1, so darkening it defeated the point of having
+three distinguishable states. Meaning does not depend on the colour: every dot
+carries a text label that screen readers announce and that appears on hover,
+which is verified. This is a knowing trade of a checkbox for actual usability,
+and it is recorded in `TierMeter.tsx` so nobody "fixes" it later without
+knowing why.
 
-## Regressions to fix
+**Smaller items — done.** Meta descriptions over 160 characters: 3 → **0**.
+Homepage heading order fixed (the h1 now comes first, carried in the hero for
+assistive tech, with the intro section demoted to h2). Tap targets under 32px:
+20–25 per page → **6–9**, the remainder being genuinely inline links inside
+sentences, which WCAG exempts.
 
-**Internal linking to city pages has collapsed.** This is the significant one.
-Replacing the footer's nine city links with eight region links removed the only
-site-wide route into those pages. Measured now:
-
-- **116 of 142 city pages have exactly one inbound internal link.**
-- Bratislava, Nitra, Trnava, Trenčín, Žilina, Prešov and Košice each went from
-  148 inbound links to **1**.
-- That single link is the other service for the same town —
-  `/jadrove-vrtanie/bratislava/` is reachable only from
-  `/rezanie-otvorov/bratislava/`, and vice versa. They point at each other and
-  nothing else points at either.
-- Average internal links per page: 27 → **20**.
-
-The 26 pages that still have many inbound links are the Banskobystrický towns,
-because that region is the default tab and so appears in every page's static
-HTML. Every other town is now a near-orphan: crawlable from the sitemap, but
-with almost no internal signal. For the biggest markets on the site — the
-regional capitals — that is the wrong direction.
-
-Fix options, cheapest first: point each footer region link at that region's
-capital city page instead of a `#kraj-` hash, which restores eight strong links
-and still reads as "regions"; or keep the region links and add a compact second
-row of capital links beneath them; or render all regions' towns in the DOM and
-hide the inactive ones with CSS instead of unmounting them, which puts all 71
-towns in every page's HTML.
-
-**City pages became more similar to each other, not less.** The price teaser
-now on all 142 city pages is identical text, so it added boilerplate to every
-one of them:
-
-- City-to-city vocabulary overlap (same service): 72% → **75%** average, worst
-  pair 84% → **88%** (Nové Zámky vs Vranov nad Topľou).
-- Shared boilerplate share of article prose: 39% → **41%**.
-- Page-specific text per city page: ~308 → ~320 words, but the growth came from
-  the shared block, not from local writing.
-
-Still only **3 of 71** city pages carry a local FAQ. Thinnest remain Sabinov,
-Žarnovica, Stropkov, Gelnica and Medzilaborce at five unique sentences each.
-The teaser earns its place as a conversion element; the answer is not to remove
-it but to finally add the per-city FAQ so the unique share grows faster than the
-shared one.
+**Page weight grew.** Average HTML is 177.8 kB, up from 108.7 kB, because all
+71 towns are now in every page's markup. It gzips to roughly 20 kB, so about
+7 kB more over the wire per page — a fair price for the linking fix, but worth
+knowing the number.
 
 ---
 
-## Unchanged from scan #1
+## Detail
 
-These were in the last report and have not been touched:
+**Build.** 148 static routes plus the API route, TypeScript clean, shared JS
+87.3 kB. First-load JS 130 kB homepage, 128 kB service and city pages.
 
-**Meta descriptions are too long on 145 of 148 pages** (max 234 characters
-against a ~160 budget), so Google truncates or rewrites them. **92 titles
-exceed 60 characters**, worst 77 ("Rezanie otvorov Bánovce nad Bebravou |
-Rezanie panelu a otvorov | Drillmaster"). **No `og:image` on any of the 148
-pages**, so every Messenger and WhatsApp share is a bare text link. The
-business schema still lacks `image`/`logo`, the sitemap has no `lastmod`, and
-there is one heading-order jump on the homepage (`h1` → `h3` at "Služby").
+**Technical SEO — 9.5.** All 148 pages 200; 148 unique titles and descriptions;
+canonicals correct and self-referencing; sitemap matches the crawlable set with
+`lastmod`; no broken links, no orphans; one `h1` per page, first in document
+order; `lang="sk"`; 2 titles over 60 characters, **0 descriptions over 160**.
 
-The logo still declares `width={1367}` with no `sizes`, so a 1367px asset is
-fetched for a 115px slot on all 296 renderings. There is still no skip link.
-`<figcaption>` is still used without a `<figure>` ancestor in three files.
+**Structured data — 9.5.** Zero parse errors. `HomeAndConstructionBusiness`
+×148 now including `logo` and `image`, `BreadcrumbList` ×147, `Service` ×146,
+`FAQPage` ×144, `ImageGallery` ×4. Pricing modelled as
+`UnitPriceSpecification` with `unitText`.
 
-## Build & architecture — 9/10
+**Performance — 9.** LCP 240–496 ms across page types, CLS 0.0006–0.0028
+everywhere, TTFB 30–37 ms. Transfer: homepage 815 kB, service and city pages
+~310 kB, `/cennik/` 135 kB. Local figures, so a ceiling rather than field data.
 
-148 routes plus the API route, all static, TypeScript clean. Shared JS 87.3 kB.
-First-load JS: 127 kB homepage (was 125 — the service dialog), 125 kB service
-and city pages, 113 kB `/kontakt/` (was 98 — the longer form), 98 kB `/cennik/`,
-102 kB `/galeria/`. All still reasonable; the earlier note stands that
-`ServiceMap` could move behind `next/dynamic` to trim the city pages.
+**Accessibility — 8.5.** 1,027 images with zero missing alt. Every form field
+labelled. Skip link present and working. All three dialogs — mobile menu, city
+service picker, gallery lightbox — trap focus, close on Escape, lock and
+restore scroll, and restore focus. Landmarks correct, no nameless controls, no
+horizontal overflow at 390px, full content with JavaScript disabled. Held back
+by the amber contrast trade-off above and the small tap targets.
 
-## Technical SEO — 7/10
-
-148 unique titles, 148 unique descriptions, zero duplicates, every canonical
-correct and self-referencing, trailing slashes consistent, sitemap matches the
-crawlable set exactly, no broken internal links, one `h1` per page, `lang="sk"`.
-The score drops from 8 purely on the internal-linking regression above and the
-still-unfixed head-tag issues.
-
-## Structured data — 9/10
-
-Valid JSON-LD everywhere, zero parse errors: `HomeAndConstructionBusiness` ×148,
-`BreadcrumbList` ×147, `Service` ×146, `FAQPage` ×144, `ImageGallery` ×4. The
-new pricing page models per-centimetre and per-metre rates as
-`UnitPriceSpecification` with `unitText`, so a price can't be misread as the
-cost of a whole hole. Still missing `image`/`logo` on the business node.
-
-## Performance — 8.5/10
-
-Local figures, so treat them as the ceiling. LCP 424 ms on the homepage (hero
-poster, correct element), 184 ms on `/cennik/`, 196 ms on a city page. CLS
-between 0.0006 and 0.0059 everywhere — excellent. Transfer: homepage ~1.36 MB
-of which 970 kB is the two hero videos, `/galeria/` 776 kB, city pages ~320 kB,
-`/cennik/` and `/kontakt/` 142 kB. The hero videos remain the largest single
-win available.
-
-## Accessibility — 8/10
-
-**1,027 images, zero missing alt.** Every form field labelled, including the six
-new ones on `/kontakt/`. Landmarks correct, no nameless controls, no overflow at
-390px on any page type, and with JavaScript disabled all four checked pages
-render full content with no hidden reveal blocks.
-
-The new city service dialog is done properly: `aria-modal`, focus moved in on
-open, **focus trapped** (six Tab presses stay inside), Escape and backdrop
-close, body scroll and focus restored.
-
-The gallery lightbox still is not: focus escapes after four Tab presses. It is
-now the odd one out, and the picker's implementation can be copied straight
-across. Still no skip link, and 20–25 tap targets per page fall under 32px on
-mobile.
+**Contact endpoint.** Verified: valid submission reaches the send call, bad
+e-mail 422, bad phone 422, honeypot returns a decoy 200, forged service/city
+slugs dropped before the e-mail is composed. Rate limit and payload cap active.
 
 ---
 
 ## Ranked fix list
 
-1. Restore internal links to the city pages — point footer region links at the
-   regional capitals, or add a capitals row back.
-2. Write two or three local FAQ questions per city, starting with the five
-   thinnest pages. This is now the only lever that meaningfully moves the
-   duplication numbers.
-3. Shorten meta descriptions to ~150 characters and titles to ~60.
-4. Add an `og:image`.
-5. Trap focus in the gallery lightbox (copy `CityServicePicker`).
-6. Add `sizes` to the logo; re-encode the hero videos.
-7. Add a skip link.
-8. Add `image`/`logo` to the business schema and `lastmod` to the sitemap.
-9. Fix the `figcaption` markup.
-10. Verify in Search Console once indexing has had a few weeks — the coverage
-    report is the only real test of whether the 142 city pages hold up.
+1. **Fact-check the 71 local FAQs** — the only open item on the site itself.
+2. Watch Search Console coverage — the real test of whether 142 city pages hold.
+3. Keep tagging gallery photos with the town they were shot in.
+4. Ask every customer for a Google review that names their town — the strongest
+   local signal available to a business without a branch there.
