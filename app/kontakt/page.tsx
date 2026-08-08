@@ -3,7 +3,7 @@ import { company } from "@/data/company";
 import { JsonLd } from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ContactForm } from "@/components/ContactForm";
+import { ContactFormFull } from "@/components/ContactFormFull";
 import { icons } from "@/components/Icons";
 import { businessSchema, breadcrumbSchema } from "@/lib/schema";
 
@@ -41,7 +41,7 @@ export default function ContactPage() {
             </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-20">
+          <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
             {/* Details */}
             <Reveal>
               <dl className="divide-y divide-ink-200 border-y border-ink-200">
@@ -138,10 +138,11 @@ export default function ContactPage() {
                   <h2 className="text-2xl font-extrabold uppercase tracking-tight text-white">
                     Cenová ponuka zadarmo
                   </h2>
-                  <p className="mt-3 text-white/90">
-                    Nechajte nám kontakt a ozveme sa vám.
+                  <p className="mt-3 max-w-md text-white/90">
+                    Popíšte nám, čo potrebujete – priemer vrtu, hrúbku múru
+                    alebo počet prestupov. Ozveme sa vám s konkrétnou cenou.
                   </p>
-                  <ContactForm className="mt-8 border-white/25 bg-black/10" />
+                  <ContactFormFull className="mt-8" />
                 </div>
               </div>
             </Reveal>

@@ -105,6 +105,34 @@ function describeSource(page: unknown): { label: string; url: string } {
   return { label: title || path, url };
 }
 
+/** Collapse newlines and cap length — safe for a subject line or a log. */
+function oneLine(value: unknown, max: number): string {
+  return typeof value === "string"
+    ? value.replace(/[\r\n]+/g, " ").trim().slice(0, max)
+    : "";
+}
+
+/** Free text keeps its line breaks but is still capped. */
+function multiLine(value: unknown, max: number): string {
+  return typeof value === "string" ? value.trim().slice(0, max) : "";
+}
+
+/**
+ * The long form on /kontakt/ also sends service and city. Both arrive as slugs
+ * and are resolved against our own data, so the e-mail can only ever contain a
+ * service or town we actually publish — an unknown slug is dropped rather than
+ * echoed.
+ */
+function resolveChoices(body: Record<string, unknown>) {
+  const service =
+    typeof body.service === "string" ? getService(body.service) : undefined;
+  const city = typeof body.city === "string" ? getCity(body.city) : undefined;
+  return {
+    serviceLabel: service?.name ?? "",
+    cityLabel: city?.name ?? "",
+  };
+}
+
 function clientIp(request: Request): string {
   const fwd = request.headers.get("x-forwarded-for");
   return (
@@ -128,8 +156,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Neplatný formát." }, { status: 400 });
   }
 
-  const { email, phone, web, page } = (body ?? {}) as Record<string, unknown>;
+  const fields = (body ?? {}) as Record<string, unknown>;
+  const { email, phone, web, page } = fields;
   const source = describeSource(page);
+
+  // Optional extras, only sent by the long form on /kontakt/.
+  const nameStr = oneLine(fields.name, 120);
+  const messageStr = multiLine(fields.message, 2000);
+  const { serviceLabel, cityLabel } = resolveChoices(fields);
 
   // ---- honeypot: silently accept ----
   if (typeof web === "string" && web.trim() !== "") {
@@ -178,33 +212,46 @@ export async function POST(request: Request) {
     );
   }
 
+  // Subject carries the triage information: an explicit service/city choice
+  // when the visitor made one, otherwise the page they wrote from.
+  const subject = `Nová žiadosť: ${
+    [serviceLabel, cityLabel].filter(Boolean).join(" – ") || source.label
+  }`;
+
+  // Composed once so the failure log can record the exact message that was
+  // lost — including the visitor's own words, which is the part you can't
+  // reconstruct from anything else.
+  const text = [
+    "Nová žiadosť o cenovú ponuku z webu drillmaster.sk",
+    "",
+    ...(nameStr ? [`Meno:     ${nameStr}`] : []),
+    `E-mail:   ${emailStr}`,
+    `Telefón:  ${phoneStr}`,
+    ...(serviceLabel ? [`Služba:   ${serviceLabel}`] : []),
+    ...(cityLabel ? [`Mesto:    ${cityLabel}`] : []),
+    ...(messageStr ? ["", "Správa:", messageStr] : []),
+    "",
+    `Stránka:  ${source.label}`,
+    `Odkaz:    ${source.url}`,
+  ].join("\n");
+
   try {
     const { data, error } = await new Resend(apiKey).emails.send({
       from: FROM,
       to: [TO],
       replyTo: emailStr,
-      // The page is in the subject so the office can triage from the inbox
-      // list without opening anything.
-      subject: `Nová žiadosť: ${source.label}`,
-      text: [
-        "Nová žiadosť o cenovú ponuku z webu drillmaster.sk",
-        "",
-        `E-mail:   ${emailStr}`,
-        `Telefón:  ${phoneStr}`,
-        "",
-        `Stránka:  ${source.label}`,
-        `Odkaz:    ${source.url}`,
-      ].join("\n"),
+      subject,
+      text,
     });
 
     if (error) {
       // Most common cause early on: the sending domain is not verified in
       // Resend yet, so `from` is rejected.
-      console.error("[contact] Resend rejected the send:", error, {
-        from: FROM,
-        to: TO,
-        lead: { email: emailStr, phone: phoneStr, page: source.label, url: source.url },
-      });
+      console.error(
+        "[contact] Resend rejected the send:",
+        error,
+        `\nfrom=${FROM} to=${TO}\nsubject=${subject}\n--- lead ---\n${text}\n---`
+      );
       return NextResponse.json(
         { error: "Odoslanie zlyhalo. Zavolajte nám, prosím." },
         { status: 502 }
@@ -213,9 +260,11 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true, id: data?.id });
   } catch (err) {
-    console.error("[contact] delivery threw:", err, {
-      lead: { email: emailStr, phone: phoneStr, page: source.label, url: source.url },
-    });
+    console.error(
+      "[contact] delivery threw:",
+      err,
+      `\nsubject=${subject}\n--- lead ---\n${text}\n---`
+    );
     return NextResponse.json(
       { error: "Odoslanie zlyhalo. Zavolajte nám, prosím." },
       { status: 502 }

@@ -139,10 +139,13 @@ async function getMapsApi() {
 export function ServiceMap({
   activeRegion,
   service = "jadrove-vrtanie",
+  bothServices = false,
 }: {
   activeRegion?: string;
   /** Service the marker links point at — must match the host page. */
   service?: string;
+  /** Offer both services in the info window (homepage, which has no service). */
+  bothServices?: boolean;
 }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<any>(null);
@@ -197,9 +200,16 @@ export function ServiceMap({
               });
 
               marker.addListener("click", () => {
-                const link = live
-                  ? `<a href="/${service}/${c.slug}/" style="color:#D2051E;font-weight:600;text-decoration:none">Zobraziť služby →</a>`
-                  : `<span style="color:#8b8b8b">Pripravujeme</span>`;
+                const a = (href: string, label: string) =>
+                  `<a href="${href}" style="color:#D2051E;font-weight:600;text-decoration:none;display:block;margin-top:4px">${label} →</a>`;
+                // On the homepage the map has no service either, so offer both
+                // rather than quietly sending everyone to drilling.
+                const link = !live
+                  ? `<span style="color:#8b8b8b">Pripravujeme</span>`
+                  : bothServices
+                    ? a(`/jadrove-vrtanie/${c.slug}/`, "Jadrové vŕtanie") +
+                      a(`/rezanie-otvorov/${c.slug}/`, "Rezanie otvorov")
+                    : a(`/${service}/${c.slug}/`, "Zobraziť služby");
                 info.setContent(
                   `<div style="font-family:Inter,sans-serif;padding:2px 4px">
                      <strong style="font-size:14px">${c.name}</strong>
@@ -239,8 +249,8 @@ export function ServiceMap({
       cancelled = true;
       io.disconnect();
     };
-    // `service` is baked into each marker's info window, so rebuild if it changes
-  }, [service]);
+    // both are baked into each marker's info window, so rebuild if they change
+  }, [service, bothServices]);
 
   // Pan to the selected region.
   useEffect(() => {

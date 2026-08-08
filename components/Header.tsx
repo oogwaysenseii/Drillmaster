@@ -75,6 +75,7 @@ export function Header() {
                 {s.name}
               </NavLink>
             ))}
+            <NavLink href="/cennik/">Cenník</NavLink>
             <NavLink href="/galeria/">Galéria</NavLink>
 
             <Link

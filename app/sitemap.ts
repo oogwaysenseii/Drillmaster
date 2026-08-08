@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = company.url;
   // Only list pages that actually exist — a sitemap pointing at 404s is worse
   // than no sitemap. Add entries here as you build the corresponding routes.
-  const staticPages = ["/", "/galeria/", "/kontakt/"];
+  const staticPages = ["/", "/cennik/", "/galeria/", "/kontakt/"];
 
   const entries: MetadataRoute.Sitemap = staticPages.map((p) => ({
     url: `${base}${p}`,

@@ -104,10 +104,14 @@ export default function HomePage() {
       <Gallery showFilter />
 
       {/* ---------- Locations: region switcher + map ---------- */}
-      <Locations />
+      <div className="-mt-5 pb-5">
+        {/* The homepage has no service of its own, so the town links would
+            otherwise always go to jadrové vŕtanie. */}
+        <Locations servicePicker />
+      </div>
 
       {/* ---------- Closing CTA: copy left, form right ---------- */}
-      <section className="relative overflow-hidden bg-brand">
+      <section className="relative overflow-hidden bg-brand" >
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.07]"
           aria-hidden="true"

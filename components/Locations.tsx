@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { regions } from "@/data/regions";
-import { citiesInRegion, activeRegionSlugs } from "@/data/cities";
+import { citiesInRegion, activeRegionSlugs, type City } from "@/data/cities";
 import { ServiceMap } from "@/components/ServiceMap";
+import { CityServicePicker } from "@/components/CityServicePicker";
 
 /**
  * Locations with a region switcher.
@@ -20,13 +21,24 @@ import { ServiceMap } from "@/components/ServiceMap";
  */
 export function Locations({
   service = "jadrove-vrtanie",
+  servicePicker = false,
 }: {
   /**
    * Which service the city links point at. On a service or city page this must
    * be that page's service — otherwise a visitor reading about rezanie otvorov
-   * clicks a town and lands on a jadrové vŕtanie page.
+   * clicks a town and lands on a jadrové vŕtanie page. It is also the starting
+   * selection when `servicePicker` is on.
    */
   service?: string;
+  /**
+   * Ask which service when a town is clicked, instead of navigating straight
+   * to `service`.
+   *
+   * Only for pages with no service of their own — the homepage. A service page
+   * already states which service it is about, so a picker there would be a
+   * pointless question with a wrong answer available.
+   */
+  servicePicker?: boolean;
 } = {}) {
   const active = useMemo(() => {
     const slugs = new Set(activeRegionSlugs());
@@ -37,11 +49,41 @@ export function Locations({
     active.find((r) => r.slug === "banskobystricky")?.slug ?? active[0]?.slug ?? ""
   );
 
+  // Town whose service dialog is open (picker mode only).
+  const [picked, setPicked] = useState<City | null>(null);
+
+  const sectionRef = useRef<HTMLElement>(null);
+
+  /**
+   * Footer links arrive as /jadrove-vrtanie/#kraj-zilinsky. The browser can't
+   * jump to that on its own — the tab is React state, not an element id — so
+   * read it on mount, select the region, and scroll here ourselves. Also
+   * listen for hashchange, since clicking a second region from the footer of
+   * this same page changes only the hash and fires no navigation.
+   */
+  useEffect(() => {
+    const apply = (smooth: boolean) => {
+      const slug = window.location.hash.replace(/^#kraj-/, "");
+      if (!slug || !active.some((r) => r.slug === slug)) return;
+      setCurrent(slug);
+      sectionRef.current?.scrollIntoView({
+        behavior: smooth && !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "smooth"
+          : "auto",
+        block: "start",
+      });
+    };
+    apply(false);
+    const onHash = () => apply(true);
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, [active]);
+
   const list = citiesInRegion(current);
   const region = active.find((r) => r.slug === current);
 
   return (
-    <section className="section">
+    <section className="section scroll-mt-24" id="kde-posobime" ref={sectionRef}>
       <div className="container">
         <div className="mx-auto max-w-2xl text-center">
           <p className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.35em] text-brand">
@@ -51,7 +93,7 @@ export function Locations({
           </p>
           <p className="mt-5 text-ink-700">
             Jadrové vŕtanie a rezanie otvorov zabezpečujeme po celom Slovensku.
-            Vyberte kraj a pozrite si mestá vo vašom okolí.
+            {" Vyberte kraj a pozrite si mestá vo vašom okolí."}
           </p>
         </div>
 
@@ -87,7 +129,11 @@ export function Locations({
         <div className="mt-5 grid gap-5 lg:grid-cols-2 lg:items-start">
           {/* Map — sticks while the town list scrolls past on tall screens */}
           <div className="order-2 lg:order-1 lg:sticky lg:top-28">
-            <ServiceMap activeRegion={current} service={service} />
+            <ServiceMap
+              activeRegion={current}
+              service={service}
+              bothServices={servicePicker}
+            />
           </div>
 
           {/* Towns in the selected region */}
@@ -106,6 +152,16 @@ export function Locations({
               <Link
                 key={c.slug}
                 href={`/${service}/${c.slug}/`}
+                // Picker mode keeps the href (crawlable, and the fallback when
+                // JS is off) but intercepts the click to ask which service.
+                onClick={
+                  servicePicker
+                    ? (e) => {
+                        e.preventDefault();
+                        setPicked(c);
+                      }
+                    : undefined
+                }
                 className="group border-b border-r border-ink-200 bg-white px-2 py-2 transition-colors duration-500 hover:bg-ink"
               >
                 <span className="flex items-start gap-1.5">
@@ -119,7 +175,11 @@ export function Locations({
                   )}
                 </span>
                 <span className="mt-1 flex items-center gap-1 text-[10px] text-ink-400">
-                  {c.isCapital ? "Krajské mesto" : "Zobraziť"}
+                  {c.isCapital
+                    ? "Krajské mesto"
+                    : servicePicker
+                      ? "Vybrať službu"
+                      : "Zobraziť"}
                   <span className="text-brand transition-transform duration-500 group-hover:translate-x-0.5">
                     →
                   </span>
@@ -144,6 +204,10 @@ export function Locations({
           </div>
         </div>
       </div>
+
+      {servicePicker && (
+        <CityServicePicker city={picked} onClose={() => setPicked(null)} />
+      )}
     </section>
   );
 }

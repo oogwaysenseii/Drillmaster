@@ -12,6 +12,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SidebarCta, CrossSellCard } from "@/components/SidebarCta";
 import { Gallery } from "@/components/Gallery";
 import { Locations } from "@/components/Locations";
+import { PriceTeaser } from "@/components/PriceTeaser";
 import { Reveal } from "@/components/Reveal";
 import {
   serviceSchema,
@@ -198,6 +199,14 @@ export function CityServicePage({
               )}
               {c.responseInfo}
             </p>
+          </Reveal>
+
+          {/* ---- Price, with a route into the full cenník ---- */}
+          <Reveal>
+            <h2 className="mt-12 text-2xl font-bold">
+              Koľko stojí {service.name.toLowerCase()} {city.nameLocative}?
+            </h2>
+            <PriceTeaser service={service.slug} city={city.nameLocative} />
           </Reveal>
 
           {/* ---- FAQ ---- */}

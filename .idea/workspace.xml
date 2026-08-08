@@ -4,7 +4,65 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="847a23ab-52fd-4adb-afdc-f2d4ad5b9861" name="Changes" comment="" />
+    <list default="true" id="847a23ab-52fd-4adb-afdc-f2d4ad5b9861" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/contact/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/contact/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/kontakt/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/kontakt/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sitemap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/sitemap.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Breadcrumbs.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CityServicePage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ContactForm.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CtaBand.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Divider.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/EquipmentSlider.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Faq.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Footer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Gallery.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/GalleryCarousel.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/GalleryLightbox.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Header.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Hero.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/HeroVideo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Icons.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/JsonLd.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Locations.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Logo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Reveal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ServiceHub.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ServiceMap.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/SidebarCta.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/TrustBand.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/cities.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/company.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/equipment.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/gallery.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/homepage.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/regions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/services.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/geo.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/schema.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/brand/drillmaster-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/galeria/jadrove-vrtanie-do-kamena.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/galeria/jadrove-vrtanie-pre-rekuperaciu.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/galeria/jadrove-vrtanie-prestupov-akejkolvek-hlbky.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/galeria/jadrove-vrtanie-prestupov-cez-zaklady.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/galeria/jadrove-vrtanie-prestupov-do-kamena.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/galeria/jadrove-vrtanie-zakladov.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/galeria/rezanie-dverneho-otvoru-do-panelu-v-byte.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/galeria/rezanie-panelu-v-byte.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/galeria/vrtanie-betonu-jadrovou-vrtackou.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/galeria/vyrezanie-otvoru-do-panelu.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/jadrova-vrtacka.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/stenova-pila.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/video/rezanie-poster.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/video/rezanie.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/video/rezanie.webm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/video/vrtanie-poster.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/video/vrtanie.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/video/vrtanie.webm" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +84,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;H:/My Drive/Coding/WebstormProjects/Drillmaster&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -60,6 +119,9 @@
       <workItem from="1786175732556" duration="70000" />
       <workItem from="1786175858091" duration="3887000" />
       <workItem from="1786183519495" duration="1893000" />
+      <workItem from="1786186327339" duration="2539000" />
+      <workItem from="1786190569084" duration="642000" />
+      <workItem from="1786191744319" duration="1949000" />
     </task>
     <servers />
   </component>

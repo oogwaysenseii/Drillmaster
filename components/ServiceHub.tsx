@@ -9,6 +9,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SidebarCta, CrossSellCard } from "@/components/SidebarCta";
 import { Gallery } from "@/components/Gallery";
 import { Locations } from "@/components/Locations";
+import { PriceTeaser } from "@/components/PriceTeaser";
 import { Reveal } from "@/components/Reveal";
 import {
   serviceSchema,
@@ -164,6 +165,14 @@ export function ServiceHub({ slug }: { slug: string }) {
             </>
           )}
 
+
+          {/* ---- Price, with a route into the full cenník ---- */}
+          <Reveal>
+            <h2 className="mt-12 text-2xl font-bold">
+              Koľko stojí {service.name.toLowerCase()}?
+            </h2>
+            <PriceTeaser service={service.slug} />
+          </Reveal>
 
           <h2 className="mt-12 text-2xl font-bold">Časté otázky</h2>
           <div className="mt-4">

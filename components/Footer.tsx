@@ -1,12 +1,8 @@
 import Link from "next/link";
 import { company } from "@/data/company";
 import { services } from "@/data/services";
-import { cities } from "@/data/cities";
+import { regions } from "@/data/regions";
 
-/** HQ first, then the regional capitals — 9 links, stable and non-arbitrary. */
-const footerCities = cities
-  .filter((c) => c.content !== null && (c.isHeadquarters || c.isCapital))
-  .sort((a, b) => (a.isHeadquarters ? -1 : b.isHeadquarters ? 1 : 0));
 import { Logo } from "@/components/Logo";
 import { icons } from "@/components/Icons";
 
@@ -74,21 +70,24 @@ export function Footer() {
               </li>
             ))}
             <li>
+              <FootLink href="/cennik/">Cenník</FootLink>
+            </li>
+            <li>
               <FootLink href="/galeria/">Galéria realizácií</FootLink>
             </li>
           </ul>
         </div>
 
-        {/* Key locations — the regional capitals plus the HQ.
-            A principled pick rather than an arbitrary two, and it gives
-            crawlers a route into the most important city pages. */}
+        {/* Regions. Each link opens the locations section with that region
+            already selected (the hash is read by <Locations/> on mount), so a
+            visitor lands on the towns they actually care about. */}
         <div>
           <ColHeading>Kde pôsobíme</ColHeading>
           <ul className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3">
-            {footerCities.map((c) => (
-              <li key={c.slug}>
-                <FootLink href={`/jadrove-vrtanie/${c.slug}/`}>
-                  {c.name}
+            {regions.map((r) => (
+              <li key={r.slug}>
+                <FootLink href={`/jadrove-vrtanie/#kraj-${r.slug}`}>
+                  {r.short}
                 </FootLink>
               </li>
             ))}
