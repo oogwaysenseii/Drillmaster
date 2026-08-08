@@ -6,6 +6,7 @@ import { regions } from "@/data/regions";
 import { citiesInRegion, activeRegionSlugs, type City } from "@/data/cities";
 import { ServiceMap } from "@/components/ServiceMap";
 import { CityServicePicker } from "@/components/CityServicePicker";
+import { TierDots, MeterLegend } from "@/components/TierMeter";
 
 /**
  * Locations with a region switcher.
@@ -174,15 +175,18 @@ export function Locations({
                     </span>
                   )}
                 </span>
-                <span className="mt-1 flex items-center gap-1 text-[10px] text-ink-400">
-                  {c.isCapital
-                    ? "Krajské mesto"
-                    : servicePicker
-                      ? "Vybrať službu"
-                      : "Zobraziť"}
-                  <span className="text-brand transition-transform duration-500 group-hover:translate-x-0.5">
-                    →
+                <span className="mt-1 flex items-center justify-between gap-1 text-[10px] text-ink-400">
+                  <span className="flex items-center gap-1">
+                    {c.isCapital
+                      ? "Krajské mesto"
+                      : servicePicker
+                        ? "Vybrať službu"
+                        : "Zobraziť"}
+                    <span className="text-brand transition-transform duration-500 group-hover:translate-x-0.5">
+                      →
+                    </span>
                   </span>
+                  <TierDots city={c} />
                 </span>
               </Link>
             ) : (
@@ -203,6 +207,8 @@ export function Locations({
           })}
           </div>
         </div>
+
+        <MeterLegend className="mt-5 justify-center" />
       </div>
 
       {servicePicker && (

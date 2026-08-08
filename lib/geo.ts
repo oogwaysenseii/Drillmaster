@@ -58,6 +58,28 @@ export function drivePhrase(city: City): string {
   return `približne ${h} h ${rest} min jazdy`;
 }
 
+/**
+ * How far a town is in commercial terms, not just kilometres.
+ *
+ * A single 100 mm hole is a different proposition at 20 minutes and at three
+ * hours: near Zvolen it's a same-day job, from Zvolen to Prešov it only makes
+ * sense as part of something bigger. The tier drives what a city page says and
+ * who it addresses — a homeowner near home, a contractor far away.
+ *
+ * Derived from the drive time rather than stored, so adding a city tiers it
+ * automatically and the copy can never contradict the distance printed
+ * alongside it.
+ */
+export type CityTier = "local" | "regional" | "project";
+
+export function cityTier(city: City): CityTier {
+  if (city.isHeadquarters) return "local";
+  const m = driveMinutes(city);
+  if (m <= 45) return "local";
+  if (m <= 120) return "regional";
+  return "project";
+}
+
 /** The published cities closest to this one — used for internal linking. */
 export function nearestPublished(city: City, limit = 4): City[] {
   return cities

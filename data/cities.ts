@@ -76,7 +76,7 @@ const published: City[] = [
     geo: { lat: 48.7395, lng: 19.1453 },
     content: {
       localIntro:
-        "Banská Bystrica je od nášho sídla vo Zvolene vzdialená približne 20 minút jazdy, takže jadrové vŕtanie aj rezanie otvorov tu vieme zabezpečiť rýchlo a bez príplatkov za dopravu na väčšie vzdialenosti. Pracujeme v celom meste vrátane sídlisk Sásová, Fončorda a Radvaň.",
+        "Banská Bystrica je od najbližšej pobočky vzdialená približne 20 minút jazdy, takže jadrové vŕtanie aj rezanie otvorov tu vieme zabezpečiť rýchlo a bez príplatkov za dopravu na väčšie vzdialenosti. Pracujeme v celom meste vrátane sídlisk Sásová, Fončorda a Radvaň.",
       buildingStock:
         "V Banskej Bystrici prevažujú rozsiahle panelové sídliská, kde riešime prestupy pre klimatizácie a rozvody a rezanie bytových jadier. K tomu pristupuje historické jadro s tehlovým a zmiešaným murivom a administratívne budovy, kde je potrebné pracovať bez narušenia prevádzky.",
       responseInfo:
@@ -97,7 +97,7 @@ const published: City[] = [
       buildingStock:
         "Bratislava je z hľadiska konštrukcií najrozmanitejšie mesto na Slovensku. V Petržalke, ktorá patrí k najväčším panelovým sídliskám v strednej Európe, riešime najmä prestupy pre klimatizácie, rekuperáciu a rezanie bytových jadier. V Starom Meste narážame na tehlové a zmiešané murivo z prelomu storočí, kde je potrebný citlivejší postup, a v novostavbách a administratívnych budovách na husto vystužený železobetón, ktorý zvláda len diamantová technika.",
       responseInfo:
-        "Bratislava je od nášho sídla najvzdialenejšou lokalitou, preto termíny plánujeme dopredu a zákazky v regióne spravidla spájame do jedného výjazdu. Vďaka tomu vieme držať ceny na rovnakej úrovni ako v okolí Zvolena. Pri väčších projektoch prichádzame na obhliadku vopred.",
+        "Bratislava je od najbližšej pobočky najďalej, preto termíny plánujeme dopredu a zákazky v regióne spravidla spájame do jedného výjazdu. Vďaka tomu vieme držať ceny na rovnakej úrovni ako v okolí Zvolena. Pri väčších projektoch prichádzame na obhliadku vopred.",
       localFaq: [
         {
           q: "Vŕtate aj v panelákoch v Petržalke?",
@@ -159,7 +159,7 @@ const published: City[] = [
       buildingStock:
         "V Brezne prevažujú menšie panelové bytové domy a rodinná zástavba, k tomu staršie murované objekty v centre. V rekreačných objektoch v okolí sa často stretávame s kamenným murivom a betónovými základmi, kde je jadrové vŕtanie jediný rozumný spôsob, ako spraviť prestup bez narušenia konštrukcie.",
       responseInfo:
-        "Brezno je od nášho sídla dostupné po hlavnej ceste cez Banskú Bystricu. Termín vieme spravidla dohodnúť do dvoch až troch dní.",
+        "Brezno je od najbližšej pobočky dostupné po hlavnej ceste cez Banskú Bystricu. Termín vieme spravidla dohodnúť do dvoch až troch dní.",
     },
   },
   {
@@ -185,7 +185,7 @@ const published: City[] = [
     geo: { lat: 48.5606, lng: 19.4197 },
     content: {
       localIntro:
-        "Detva je od nášho sídla vo Zvolene doslova na skok, takže jadrové vŕtanie aj rezanie otvorov tu vieme zabezpečiť veľmi rýchlo – často ešte v ten istý deň. Pracujeme v bytových domoch v meste, v rodinných domoch aj v priemyselných objektoch v okolí.",
+        "Detva je od najbližšej pobočky doslova na skok, takže jadrové vŕtanie aj rezanie otvorov tu vieme zabezpečiť veľmi rýchlo – často ešte v ten istý deň. Pracujeme v bytových domoch v meste, v rodinných domoch aj v priemyselných objektoch v okolí.",
       buildingStock:
         "V Detve nájdeme panelové bytové domy zo 70. a 80. rokov postavené súbežne s rozvojom miestneho strojárskeho priemyslu, k tomu rozsiahlu rodinnú zástavbu a typické podpolianske usadlosti v okolitých obciach, kde sa často stretávame s kamenným murivom a starými betónovými základmi.",
       responseInfo:
@@ -219,7 +219,7 @@ const published: City[] = [
       buildingStock:
         "V Malackách prevažuje nižšia zástavba – rodinné domy a menšie bytové domy, doplnené o novšie logistické a výrobné haly na okraji mesta. V starších objektoch v centre narazíme na tehlové murivo, v halách naopak na hrubé železobetónové podlahy a panely.",
       responseInfo:
-        "Malacky sú od nášho sídla na opačnej strane republiky, preto zákazky na Záhorí plánujeme dopredu a spájame ich do jedného výjazdu.",
+        "Malacky sú od najbližšej pobočky na opačnej strane republiky, preto zákazky na Záhorí plánujeme dopredu a spájame ich do jedného výjazdu.",
     },
   },
   {
@@ -340,7 +340,7 @@ const published: City[] = [
       buildingStock:
         "V Senici prevažujú panelové bytové domy a rodinná zástavba, doplnené o výrobné haly na okraji mesta. V halách ide najčastejšie o veľkopriemerové vývrty pre technologické rozvody a rezy do betónových podláh.",
       responseInfo:
-        "Senica je od nášho sídla vzdialenejšia, preto zákazky na Záhorí spájame do jedného výjazdu.",
+        "Senica je od najbližšej pobočky vzdialenejšia, preto zákazky na Záhorí spájame do jedného výjazdu.",
     },
   },
   {
@@ -402,6 +402,16 @@ const published: City[] = [
         "Ilava je menšie mesto s historickým jadrom, menšími bytovými domami a rodinnou zástavbou v úzkom údolí Váhu. V starších objektoch prevažuje tehlové a kamenné murivo.",
       responseInfo:
         "Ilavu riešime spolu s ostatnými zákazkami na Považí, termín preto plánujeme dopredu.",
+      localFaq: [
+        {
+          q: "Vŕtate aj v priemyselných objektoch v okolí Ilavy?",
+          a: "Áno. Hrubé železobetónové steny a stropy v halách sú pre diamantovú techniku bežná práca – vŕtame prestupy pre technologické rozvody, vzduchotechniku aj káblové trasy, a to aj vo výške alebo v stiesnených priestoroch medzi technológiou.",
+        },
+        {
+          q: "Naruší vŕtanie staršiu tehlovú stenu?",
+          a: "Nie. Jadrové vŕtanie funguje na princípe obrusovania, nie príklepu, takže do muriva neprenáša otrasy. Práve preto ho volíme v starších tehlových a kamenných objektoch, kde by príklepové vŕtanie mohlo spôsobiť praskliny.",
+        },
+      ],
     },
   },
   {
@@ -552,6 +562,16 @@ const published: City[] = [
         "Šaľa má panelové bytové domy postavené pre zamestnancov chemického priemyslu a rozsiahlu rodinnú zástavbu. V technologických objektoch ide o hrubé železobetónové konštrukcie, kde je diamantová technika jedinou možnosťou.",
       responseInfo:
         "Šaľu riešime v rámci výjazdov na západné Slovensko, termín preto plánujeme dopredu.",
+      localFaq: [
+        {
+          q: "Pracujete aj v objektoch chemického areálu?",
+          a: "Áno. V technologických objektoch ide spravidla o hrubé železobetónové konštrukcie, kde je diamantová technika jedinou reálnou možnosťou. Rátame s tým, že vstup podlieha školeniu a povoleniu prevádzkovateľa, takže termín dohadujeme priamo so správcom objektu.",
+        },
+        {
+          q: "Vŕtate otvory pre rekuperáciu a klimatizáciu v panelákoch?",
+          a: "Áno, v šalianskych panelových domoch je to jedna z najčastejších zákaziek. Otvor vyvŕtame v presnom priemere a so spádom von, aby v ňom nestála voda. Vŕtame s chladením vodou, takže byt zostáva obývateľný a nezostáva po nás prach.",
+        },
+      ],
     },
   },
   {
@@ -613,6 +633,16 @@ const published: City[] = [
         "Bytča je menšie mesto s historickým jadrom pri renesančnom zámku, menšími bytovými domami a rodinnou zástavbou. V starších objektoch prevažuje kamenné a tehlové murivo.",
       responseInfo:
         "Bytču riešime v rámci výjazdov na severné Považie, termín preto dohadujeme dopredu.",
+      localFaq: [
+        {
+          q: "Poradíte si s kamenným murivom v starších domoch v Bytči?",
+          a: "Áno. V staršej zástavbe okolo historického jadra býva murivo nehomogénne – kameň, tehla aj dodatočne dobetónované časti v jednej stene. Diamantová korunka si s tým poradí, vŕtanie však trvá dlhšie ako v betóne a postupujeme opatrnejšie, aby sa okolo otvoru nič neuvoľnilo.",
+        },
+        {
+          q: "Aký prístup potrebujete v úzkych uliciach centra?",
+          a: "Techniku dopravíme k vrtu po častiach, takže nám stačí zaparkovať v rozumnej vzdialenosti od vchodu. Na mieste potrebujeme prívod elektriny 230 V a prístup k vode – ak voda nie je k dispozícii, privezieme si vlastnú nádrž.",
+        },
+      ],
     },
   },
   {
@@ -627,7 +657,7 @@ const published: City[] = [
       buildingStock:
         "Čadca leží v úzkom údolí, takže zástavba je natiahnutá pozdĺž rieky – panelové bytové domy v meste a rodinné domy vo svahoch. V starších kysuckých domoch sa často stretávame s kamennými základmi a zmiešaným murivom.",
       responseInfo:
-        "Čadca je od nášho sídla vzdialenejšia, zákazky na Kysuciach preto spájame do jedného výjazdu.",
+        "Čadca je od najbližšej pobočky vzdialenejšia, zákazky na Kysuciach preto spájame do jedného výjazdu.",
     },
   },
   {
@@ -702,7 +732,7 @@ const published: City[] = [
       buildingStock:
         "Námestovo má menšie panelové sídliská a rozsiahlu rodinnú zástavbu, doplnenú o rekreačné objekty pri priehrade. V starších oravských domoch prevažuje kamenné murivo a betónové základy.",
       responseInfo:
-        "Horná Orava je od nášho sídla vzdialenejšia, zákazky v regióne preto spájame do jedného výjazdu.",
+        "Horná Orava je od najbližšej pobočky vzdialenejšia, zákazky v regióne preto spájame do jedného výjazdu.",
     },
   },
   {
@@ -792,7 +822,7 @@ const published: City[] = [
       buildingStock:
         "Revúca má staršie murované jadro, menšie panelové bytové domy a rozsiahlu rodinnú zástavbu. V okolitých gemerských obciach sa často stretávame s kamenným murivom a starými betónovými základmi.",
       responseInfo:
-        "Revúca je od nášho sídla vzdialenejšia, zákazky v Gemeri preto spájame do jedného výjazdu.",
+        "Revúca je od najbližšej pobočky vzdialenejšia, zákazky v Gemeri preto spájame do jedného výjazdu.",
     },
   },
   {
@@ -853,7 +883,7 @@ const published: City[] = [
       buildingStock:
         "Prešov má rozsiahle panelové sídliská, ktoré patria k najväčším na východe Slovenska, a k tomu historické jadro s hrubým tehlovým murivom. V bytových domoch riešime najmä prestupy pre klimatizácie a rekuperáciu a rezanie bytových jadier.",
       responseInfo:
-        "Prešov je od nášho sídla na východe republiky, preto termíny plánujeme dopredu a zákazky v regióne spájame do jedného výjazdu.",
+        "Prešov je od najbližšej pobočky na východe republiky, preto termíny plánujeme dopredu a zákazky v regióne spájame do jedného výjazdu.",
     },
   },
   {
@@ -883,7 +913,7 @@ const published: City[] = [
       buildingStock:
         "Humenné má rozsiahle panelové sídliská postavené s rozvojom chemického priemyslu v regióne a k tomu staršiu murovanú zástavbu v centre. V priemyselných objektoch ide o hrubé železobetónové konštrukcie.",
       responseInfo:
-        "Humenné je od nášho sídla vzdialené, termíny preto plánujeme dopredu a zákazky v regióne spájame.",
+        "Humenné je od najbližšej pobočky vzdialené, termíny preto plánujeme dopredu a zákazky v regióne spájame.",
     },
   },
   {
@@ -943,7 +973,7 @@ const published: City[] = [
       buildingStock:
         "Poprad má rozsiahle panelové sídliská a k tomu veľké množstvo ubytovacích a rekreačných objektov v celom podtatranskom regióne. V hoteloch a penziónoch oceníte, že pracujeme bez prachu a bez odstavenia prevádzky.",
       responseInfo:
-        "Poprad je od nášho sídla vzdialenejší, termíny preto plánujeme dopredu a podtatranské zákazky spájame.",
+        "Poprad je od najbližšej pobočky vzdialenejší, termíny preto plánujeme dopredu a podtatranské zákazky spájame.",
     },
   },
   {
@@ -959,6 +989,16 @@ const published: City[] = [
         "Sabinov má staršie murované jadro, menšie panelové bytové domy a rozsiahlu rodinnú zástavbu. V okolitých obciach prevažujú staršie objekty s kamennými základmi.",
       responseInfo:
         "Sabinov riešime spolu so zákazkami v okolí Prešova, termín preto dohadujeme dopredu.",
+      localFaq: [
+        {
+          q: "Vŕtate prestupy cez kamenné základy starších domov?",
+          a: "Áno, v okolitých obciach je to častá požiadavka – najmä pri dodatočnom zavedení vody, kanalizácie alebo elektriny do starších domov. Kamenné základy sú nepravidelné, preto vrt vedieme pomalšie a priebežne kontrolujeme jeho smer.",
+        },
+        {
+          q: "Dá sa vŕtať aj v obývanom byte?",
+          a: "Áno. Vŕtame s chladením vodou, takže nevzniká prakticky žiadny prach, a miesto po sebe upraceme. Byt ani počas prác nemusíte opúšťať – obmedzenie je len hluk v bezprostrednom okolí vrtu.",
+        },
+      ],
     },
   },
   {
@@ -1003,7 +1043,7 @@ const published: City[] = [
       buildingStock:
         "Stropkov je menšie mesto s panelovými bytovými domami a prevažujúcou rodinnou zástavbou. V okolitých obciach prevažujú staršie objekty s kamennými základmi a zmiešaným murivom.",
       responseInfo:
-        "Stropkov je od nášho sídla vzdialený, zákazky na severovýchode preto spájame do jedného výjazdu.",
+        "Stropkov je od najbližšej pobočky vzdialený, zákazky na severovýchode preto spájame do jedného výjazdu.",
     },
   },
   {
@@ -1049,7 +1089,7 @@ const published: City[] = [
       buildingStock:
         "Košice majú jedny z najrozsiahlejších panelových sídlisk na Slovensku, kde riešime prestupy pre klimatizácie, rekuperáciu a rezanie bytových jadier. K tomu historické centrum s hrubým tehlovým murivom a rozsiahle priemyselné areály, kde ide o veľkopriemerové vývrty cez hrubý železobetón.",
       responseInfo:
-        "Košice sú od nášho sídla vzdialené, preto termíny plánujeme dopredu a zákazky na východe spájame do jedného výjazdu. Pri väčších projektoch prichádzame na obhliadku vopred.",
+        "Košice sú od najbližšej pobočky vzdialené, preto termíny plánujeme dopredu a zákazky na východe spájame do jedného výjazdu. Pri väčších projektoch prichádzame na obhliadku vopred.",
     },
   },
   {
@@ -1064,7 +1104,17 @@ const published: City[] = [
       buildingStock:
         "Gelnica je staré banské mesto v úzkom údolí – prevažuje tu staršia murovaná a kamenná zástavba, doplnená o menšie bytové domy. V starších objektoch je murivo často nehomogénne.",
       responseInfo:
-        "Gelnica je od nášho sídla vzdialenejšia, zákazky v regióne preto spájame do jedného výjazdu.",
+        "Gelnica je od najbližšej pobočky vzdialenejšia, zákazky v regióne preto spájame do jedného výjazdu.",
+      localFaq: [
+        {
+          q: "Čo znamená nehomogénne murivo pre cenu a čas vŕtania?",
+          a: "V starej banskej zástavbe sa v jednej stene často strieda kameň, malta aj tehla. Korunka sa v takom murive opotrebuje rýchlejšie a vŕtanie trvá dlhšie než v betóne, preto pri takýchto objektoch potvrdzujeme cenu až po obhliadke konkrétnej steny.",
+        },
+        {
+          q: "Dostanete sa aj k domom vo svahu nad údolím?",
+          a: "Vo väčšine prípadov áno. Techniku prenášame po častiach, takže nám stačí prístup pešo a miesto na zaparkovanie v rozumnej vzdialenosti. Ak je prístup komplikovaný, spomeňte to pri dohadovaní termínu – prispôsobíme tomu vybavenie.",
+        },
+      ],
     },
   },
   {
@@ -1139,7 +1189,7 @@ const published: City[] = [
       buildingStock:
         "Trebišov má panelové sídliská, staršiu murovanú zástavbu v centre a rozsiahlu rodinnú zástavbu na rovine. Poľnohospodárske objekty v okolí prinášajú zákazky s prestupmi cez hrubé betónové podlahy a steny.",
       responseInfo:
-        "Trebišov je od nášho sídla vzdialený, zákazky na východe preto spájame do jedného výjazdu.",
+        "Trebišov je od najbližšej pobočky vzdialený, zákazky na východe preto spájame do jedného výjazdu.",
     },
   },
 ];

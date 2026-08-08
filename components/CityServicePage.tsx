@@ -5,7 +5,9 @@ import { getService, services } from "@/data/services";
 import { getCity, publishedCities } from "@/data/cities";
 import { company } from "@/data/company";
 import { galleryByCategory, type GalleryCategory } from "@/data/gallery";
-import { roadDistanceKm, drivePhrase } from "@/lib/geo";
+import { roadDistanceKm, drivePhrase, cityTier } from "@/lib/geo";
+import { tierCopy, fillTokens } from "@/data/tiers";
+import { MeterDot } from "@/components/TierMeter";
 import { JsonLd } from "@/components/JsonLd";
 import { Faq } from "@/components/Faq";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -35,14 +37,16 @@ export function cityServiceMetadata(
   const city = getCity(citySlug);
   if (!service || !city || !city.content) return {};
 
-  const hook =
-    service.slug === "jadrove-vrtanie"
-      ? "Vŕtanie prestupov"
-      : "Rezanie panelu a otvorov";
+  // Title without the extra hook: the root layout already appends
+  // "| Drillmaster", and the old three-part title ran to 77 characters, well
+  // past what Google shows.
+  // Description kept near 150 characters for the same reason, with the tier
+  // hook doing the differentiating.
+  const hook = tierCopy[cityTier(city)].metaHook;
 
   return {
-    title: `${service.name} ${city.name} | ${hook}`,
-    description: `${service.name} ${city.nameLocative} a okolí. ${service.summary} Expresné termíny, cenová ponuka zadarmo. Volajte ${company.phoneDisplay}.`,
+    title: `${service.name} ${city.name}`,
+    description: `${service.name} ${city.nameLocative} a okolí. ${hook} Cenová ponuka zadarmo, volajte ${company.phoneDisplay}.`,
     alternates: { canonical: `/${service.slug}/${city.slug}/` },
     openGraph: { title: `${service.name} ${city.name} | ${company.name}` },
   };
@@ -69,6 +73,14 @@ export function CityServicePage({
   // template with the name swapped.
   const km = roadDistanceKm(city);
   const drive = drivePhrase(city);
+  const tier = tierCopy[cityTier(city)];
+  const fill = (t: string) =>
+    fillTokens(t, {
+      mesto: city.nameLocative,
+      km,
+      drive,
+      sluzba: service.name.toLowerCase(),
+    });
 
   const crumbs = [
     { name: "Domov", url: "/" },
@@ -161,11 +173,9 @@ export function CityServicePage({
                 <span className="mt-2 h-2 w-2 shrink-0 bg-brand" />
                 <span className="leading-relaxed text-ink-700">
                   <strong className="font-bold text-ink-900">
-                    Lokálna expertíza:
+                    {tier.whyBullet.label}:
                   </strong>{" "}
-                  Poskytujeme služby obyvateľom a firmám {city.nameLocative}{" "}
-                  a okolí. Poznáme miestne podmienky a dokážeme flexibilne
-                  reagovať na vaše požiadavky.
+                  {tier.whyBullet.text}
                 </span>
               </li>
               {service.benefits.map((b) => (
@@ -182,23 +192,59 @@ export function CityServicePage({
             </ul>
           </Reveal>
 
-          {/* ---- Availability: computed distance + city-specific note ---- */}
+          {/* ---- Availability and price, by distance ----
+               Kept to one line plus a table on purpose: this is a buying
+               decision (how far, how soon, what it costs), not an essay.
+               See data/tiers.ts. */}
           <Reveal>
-            <h2 className="mt-12 text-2xl font-bold">Termín a dostupnosť</h2>
+            <h2 className="mt-12 text-2xl font-bold">
+              Dostupnosť a cena {city.nameLocative}
+            </h2>
+
             <p className="mt-4 leading-relaxed text-ink-700">
-              {city.isHeadquarters ? (
-                <>
-                  Sídlime priamo {city.nameLocative}, takže sme u vás
-                  najrýchlejšie zo všetkých našich lokalít.{" "}
-                </>
-              ) : (
-                <>
-                  Z nášho sídla vo Zvolene je to {city.nameLocative} približne{" "}
-                  {km} km, teda {drive}.{" "}
-                </>
-              )}
+              {city.isHeadquarters
+                ? `Sídlime priamo ${city.nameLocative}, takže sme u vás najrýchlejšie zo všetkých našich lokalít.`
+                : tier.lead}{" "}
               {c.responseInfo}
             </p>
+
+            <dl className="mt-6 divide-y divide-ink-200 border-y border-ink-200">
+              {/* Distance as a level, not a number: "235 km" invites the
+                  visitor to decide for us that it's too far. */}
+              <div className="flex flex-col gap-1 py-4 sm:flex-row sm:gap-6">
+                <dt className="shrink-0 text-xs font-bold uppercase tracking-[0.18em] text-ink-400 sm:w-44">
+                  Vzdialenosť
+                </dt>
+                <dd className="flex items-center gap-2.5 text-ink-700">
+                  <MeterDot
+                    metric="distance"
+                    level={city.isHeadquarters ? 1 : tier.meters.distance}
+                    size="md"
+                    decorative
+                  />
+                  <span className="font-bold text-ink-900">
+                    {city.isHeadquarters ? "Sídlo firmy" : tier.distanceLabel}
+                  </span>
+                </dd>
+              </div>
+              {tier.rows.map((r) => (
+                <div
+                  key={r.label}
+                  className="flex flex-col gap-1 py-4 sm:flex-row sm:gap-6"
+                >
+                  <dt className="shrink-0 text-xs font-bold uppercase tracking-[0.18em] text-ink-400 sm:w-44">
+                    {r.label}
+                  </dt>
+                  <dd className="leading-relaxed text-ink-700">{r.text}</dd>
+                </div>
+              ))}
+              <div className="flex flex-col gap-1 py-4 sm:flex-row sm:gap-6">
+                <dt className="shrink-0 text-xs font-bold uppercase tracking-[0.18em] text-ink-400 sm:w-44">
+                  Najvýhodnejšie pre
+                </dt>
+                <dd className="leading-relaxed text-ink-700">{tier.bestFor}</dd>
+              </div>
+            </dl>
           </Reveal>
 
           {/* ---- Price, with a route into the full cenník ---- */}
@@ -237,10 +283,7 @@ export function CityServicePage({
         </article>
 
         <aside className="lg:sticky lg:top-24 lg:self-start">
-          <SidebarCta
-            title={`${service.name} ${city.nameLocative}`}
-            text="Nechajte nám kontakt a ozveme sa vám s cenovou ponukou. Obratom a úplne zadarmo."
-          />
+          <SidebarCta title={fill(tier.cta.title)} text={fill(tier.cta.text)} />
           {other && (
             <CrossSellCard
               title="Hľadáte iné služby?"
