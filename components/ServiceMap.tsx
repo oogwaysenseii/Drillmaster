@@ -43,17 +43,20 @@ const MAP_STYLE = [
 const CIRCLE_PATH =
   "M 0,0 m -10,0 a 10,10 0 1,0 20,0 a 10,10 0 1,0 -20,0";
 
+/** Inject the bootstrap once. Resolves as soon as the tag has loaded. */
 function loadMapsScript(): Promise<void> {
   if (typeof window === "undefined") return Promise.resolve();
-  const w = window as any;
-  if (w.google?.maps) return Promise.resolve();
 
   const existing = document.getElementById(SCRIPT_ID) as HTMLScriptElement | null;
   if (existing) {
+    // Already finished loading in an earlier mount — a `load` listener added
+    // now would never fire, so resolve immediately and let waitForImportLibrary
+    // below decide when the API is genuinely usable.
+    if (existing.dataset.loaded === "1") return Promise.resolve();
     return new Promise((resolve, reject) => {
       existing.addEventListener("load", () => resolve());
       existing.addEventListener("error", () =>
-        reject(new Error("Maps script failed"))
+        reject(new Error("Maps script failed to load"))
       );
     });
   }
@@ -64,42 +67,72 @@ function loadMapsScript(): Promise<void> {
     s.async = true;
     s.src =
       `https://maps.googleapis.com/maps/api/js?key=${KEY}` +
-      `&libraries=maps,marker&loading=async&v=weekly&language=sk&region=SK`;
-    s.onload = () => resolve();
-    s.onerror = () => reject(new Error("Maps script failed"));
+      `&loading=async&v=weekly&language=sk&region=SK`;
+    s.onload = () => {
+      s.dataset.loaded = "1";
+      resolve();
+    };
+    s.onerror = () => reject(new Error("Maps script failed to load"));
     document.head.appendChild(s);
   });
+}
+
+/**
+ * Wait until the async bootstrap has attached `importLibrary`.
+ *
+ * `window.google.maps` appears BEFORE `importLibrary` is attached to it, so
+ * "does google.maps exist" is not a safe readiness test — that gap is what
+ * produced "n is not a constructor" in production: the old code saw
+ * google.maps, decided the modern loader wasn't present, fell back to reading
+ * google.maps.Map directly, and got `undefined`.
+ */
+async function waitForImportLibrary(timeoutMs = 10000): Promise<any> {
+  const started = Date.now();
+  for (;;) {
+    const g = (window as any).google;
+    if (typeof g?.maps?.importLibrary === "function") return g;
+    if (Date.now() - started > timeoutMs) {
+      throw new Error("google.maps.importLibrary never appeared");
+    }
+    await new Promise((r) => setTimeout(r, 50));
+  }
 }
 
 /**
  * Resolve the constructors we need.
  *
  * With `loading=async` the bootstrap does NOT populate google.maps.Map
- * synchronously — you must await importLibrary() first, otherwise you get
- * "google.maps.Map is not a constructor". The direct-property branch is a
- * fallback for the older synchronous loader.
+ * synchronously — every constructor must come from importLibrary(). There is
+ * deliberately no direct-property fallback: reading google.maps.Map before the
+ * library is imported yields `undefined`, and `new undefined()` fails with a
+ * message that says nothing useful once minified.
  */
 async function getMapsApi() {
   await loadMapsScript();
-  const g = (window as any).google;
-  if (!g?.maps) throw new Error("Maps namespace missing");
+  const g = await waitForImportLibrary();
 
-  if (typeof g.maps.importLibrary === "function") {
-    const [mapsLib, markerLib] = await Promise.all([
-      g.maps.importLibrary("maps"),
-      g.maps.importLibrary("marker"),
-    ]);
-    return {
-      Map: mapsLib.Map,
-      InfoWindow: mapsLib.InfoWindow,
-      Marker: markerLib.Marker,
-    };
+  const [mapsLib, markerLib] = await Promise.all([
+    g.maps.importLibrary("maps"),
+    g.maps.importLibrary("marker"),
+  ]);
+
+  const api = {
+    Map: mapsLib?.Map,
+    InfoWindow: mapsLib?.InfoWindow,
+    Marker: markerLib?.Marker,
+  };
+
+  // Name the missing piece rather than letting `new undefined()` throw.
+  for (const [name, ctor] of Object.entries(api)) {
+    if (typeof ctor !== "function") {
+      throw new Error(`Maps API loaded but ${name} is not a constructor`);
+    }
   }
 
-  return {
-    Map: g.maps.Map,
-    InfoWindow: g.maps.InfoWindow,
-    Marker: g.maps.Marker,
+  return api as {
+    Map: any;
+    InfoWindow: any;
+    Marker: any;
   };
 }
 
@@ -185,7 +218,16 @@ export function ServiceMap({
             setStatus("ready");
           })
           .catch((err) => {
-            console.error("[ServiceMap]", err);
+            // Log the message explicitly: minified stacks turn a thrown
+            // Error into "n is not a constructor" with no clue which one.
+            console.error(
+              "[ServiceMap] map init failed:",
+              err instanceof Error ? err.message : err,
+              "\nIf this mentions the key, check the HTTP-referrer " +
+                "restriction in Google Cloud Console covers this domain " +
+                "(including *.vercel.app previews) and that billing is on.",
+              err
+            );
             if (!cancelled) setStatus("error");
           });
       },
@@ -209,12 +251,29 @@ export function ServiceMap({
     mapRef.current.setZoom(9);
   }, [activeRegion, status]);
 
+  // No key configured. This is a deployment mistake, not something a visitor
+  // can act on — so show neutral copy that still states the coverage area,
+  // and leave the diagnostic in the console for whoever deploys the site.
   if (!KEY) {
+    if (typeof window !== "undefined") {
+      console.warn(
+        "[ServiceMap] NEXT_PUBLIC_GOOGLE_MAPS_KEY is not set. " +
+          "Locally: add it to .env.local. On Vercel: Project Settings → " +
+          "Environment Variables, then redeploy (NEXT_PUBLIC_ vars are " +
+          "baked in at build time)."
+      );
+    }
     return (
-      <div className="flex h-[420px] items-center justify-center border border-dashed border-ink-200 bg-ink-100 text-center text-sm text-ink-400">
-        <p className="max-w-sm px-6">
-          Mapa sa nezobrazuje – chýba <code>NEXT_PUBLIC_GOOGLE_MAPS_KEY</code>.
-          Doplňte ho do <code>.env.local</code>.
+      <div className="flex h-[210px] w-full items-center justify-center border border-ink-200 bg-ink-100 text-center md:h-[300px]">
+        <p className="max-w-xs px-6 text-sm leading-relaxed text-ink-700">
+          Pôsobíme po celom Slovensku – so sídlom vo Zvolene.
+          <br />
+          <a
+            href={`tel:${company.phone}`}
+            className="mt-2 inline-block font-bold text-brand hover:underline"
+          >
+            {company.phoneDisplay}
+          </a>
         </p>
       </div>
     );
@@ -229,12 +288,25 @@ export function ServiceMap({
         className="h-[210px] w-full bg-ink-100 md:h-[300px]"
       />
       {status !== "ready" && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <span className="text-sm text-ink-400">
-            {status === "error"
-              ? "Mapu sa nepodarilo načítať."
-              : "Načítavam mapu…"}
-          </span>
+        <div className="absolute inset-0 flex items-center justify-center text-center">
+          {status === "error" ? (
+            // A visitor can do nothing about a failed map, so give them the
+            // information the map was there to convey instead of a dead box.
+            <p className="max-w-xs px-6 text-sm leading-relaxed text-ink-700">
+              Pôsobíme po celom Slovensku – so sídlom vo Zvolene.
+              <br />
+              <a
+                href={`tel:${company.phone}`}
+                className="mt-2 inline-block font-bold text-brand hover:underline"
+              >
+                {company.phoneDisplay}
+              </a>
+            </p>
+          ) : (
+            <span className="pointer-events-none text-sm text-ink-400">
+              Načítavam mapu…
+            </span>
+          )}
         </div>
       )}
     </div>

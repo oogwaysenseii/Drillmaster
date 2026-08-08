@@ -248,8 +248,8 @@ export function CityServicePage({
         <Gallery
           category={service.slug as GalleryCategory}
           city={city.slug}
-          heading={`${service.name} – realizácie`}
-          intro={`Fotografie z realizácií: ${service.name.toLowerCase()} v rodinných domoch, bytoch aj priemyselných objektoch.`}
+          heading={`${service.name} ${city.nameLocative}`}
+          intro={`Ukážky našej práce – ${service.name.toLowerCase()} v rodinných domoch, bytoch aj priemyselných objektoch.`}
         />
       )}
 

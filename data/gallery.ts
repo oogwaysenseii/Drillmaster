@@ -77,7 +77,6 @@ export const gallery: GalleryItem[] = [
     caption: "Rezanie panelu v byte",
     category: "rezanie-otvorov",
     city: "detva",
-
   },
   {
     src: "/galeria/jadrove-vrtanie-pre-rekuperaciu.webp",
@@ -92,7 +91,6 @@ export const gallery: GalleryItem[] = [
     caption: "Vyrezanie dverného otvoru do panelu",
     category: "rezanie-otvorov",
     city: "banska-bystrica",
-
   },
   {
     src: "/galeria/jadrove-vrtanie-do-kamena.webp",
@@ -107,7 +105,6 @@ export const gallery: GalleryItem[] = [
     caption: "Prestupy akejkoľvek hĺbky",
     category: "jadrove-vrtanie",
     city: "zvolen",
-
   },
   {
     src: "/galeria/jadrove-vrtanie-prestupov-cez-zaklady.webp",
@@ -115,7 +112,6 @@ export const gallery: GalleryItem[] = [
     caption: "Vŕtanie v náročných podmienkach",
     category: "jadrove-vrtanie",
     city: "zvolen",
-
   },
 ];
 

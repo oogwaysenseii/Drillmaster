@@ -17,7 +17,20 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
  * Validation runs client-side for instant feedback AND server-side in
  * /api/contact (the client check is UX, not security).
  */
-export function ContactForm({ className = "" }: { className?: string }) {
+export function ContactForm({
+  className = "",
+  padding = "p-7 md:p-9",
+}: {
+  className?: string;
+  /**
+   * Padding utilities for the form box. This is a separate prop rather than
+   * something you append to `className` on purpose: Tailwind emits padding
+   * utilities in scale order, so a `p-5` tacked onto className loses to the
+   * default `md:p-9` no matter where it sits in the string. Passing it here
+   * replaces the default instead of competing with it.
+   */
+  padding?: string;
+}) {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [web, setWeb] = useState(""); // honeypot
@@ -86,7 +99,7 @@ export function ContactForm({ className = "" }: { className?: string }) {
     <form
       onSubmit={onSubmit}
       noValidate
-      className={`border border-white/25 bg-black/10 p-7 text-left backdrop-blur-sm md:p-9 ${className}`}
+      className={`border border-white/25 bg-black/10 ${padding} text-left backdrop-blur-sm ${className}`}
     >
       {/* Stacked, not side-by-side: the form now sits in a narrower column */}
       <div className="grid gap-5">

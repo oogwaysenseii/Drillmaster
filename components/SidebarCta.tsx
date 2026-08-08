@@ -44,7 +44,7 @@ export function SidebarCta({
           </span>
         </a>
 
-        <ContactForm className="mt-6 border-white/25 bg-black/10 p-2" />
+        <ContactForm padding="p-5" className="mt-6 border-white/25 bg-black/10" />
       </div>
     </div>
   );
