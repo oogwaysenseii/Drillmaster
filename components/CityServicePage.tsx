@@ -6,7 +6,7 @@ import { getCity, publishedCities } from "@/data/cities";
 import { company } from "@/data/company";
 import { galleryByCategory, type GalleryCategory } from "@/data/gallery";
 import { roadDistanceKm, drivePhrase, cityTier } from "@/lib/geo";
-import { tierCopy, fillTokens } from "@/data/tiers";
+import { tierCopy, fillTokens, tierLead } from "@/data/tiers";
 import { MeterDot } from "@/components/TierMeter";
 import { JsonLd } from "@/components/JsonLd";
 import { Faq } from "@/components/Faq";
@@ -207,26 +207,29 @@ export function CityServicePage({
             <p className="mt-4 leading-relaxed text-ink-700">
               {city.isHeadquarters
                 ? `Sídlime priamo ${city.nameLocative}, takže sme u vás najrýchlejšie zo všetkých našich lokalít.`
-                : tier.lead}{" "}
+                : tierLead(tier, city.slug)}{" "}
               {c.responseInfo}
             </p>
 
             <dl className="mt-6 divide-y divide-ink-200 border-y border-ink-200">
-              {/* Distance as a level, not a number: "235 km" invites the
-                  visitor to decide for us that it's too far. */}
+              {/* Availability, not distance. The underlying fact is the same,
+                  but a service level is something the visitor can weigh, while
+                  "distance: high" just reads as a reason not to call. */}
               <div className="flex flex-col gap-1 py-4 sm:flex-row sm:gap-6">
                 <dt className="shrink-0 text-xs font-bold uppercase tracking-[0.18em] text-ink-400 sm:w-44">
-                  Vzdialenosť
+                  Dostupnosť
                 </dt>
                 <dd className="flex items-center gap-2.5 text-ink-700">
                   <MeterDot
-                    metric="distance"
+                    metric="availability"
                     level={city.isHeadquarters ? 1 : tier.meters.distance}
                     size="md"
                     decorative
                   />
                   <span className="font-bold text-ink-900">
-                    {city.isHeadquarters ? "Sídlo firmy" : tier.distanceLabel}
+                    {city.isHeadquarters
+                      ? "Dobrá – sídlo firmy"
+                      : tier.availabilityLabel}
                   </span>
                 </dd>
               </div>

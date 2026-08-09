@@ -58,7 +58,7 @@ const published: City[] = [
       buildingStock:
         "Vo Zvolene sa najčastejšie stretávame s panelovými bytovými domami zo 70. a 80. rokov, kde riešime prestupy pre klimatizácie, rekuperáciu a nové rozvody, so staršou tehlovou zástavbou v centre a s novostavbami rodinných domov na okrajoch mesta. Pre každý typ konštrukcie volíme vhodný priemer, techniku aj postup.",
       responseInfo:
-        "Keďže sídlime priamo vo Zvolene, obhliadku aj samotnú realizáciu dokážeme často zabezpečiť v priebehu 24 hodín. V urgentných prípadoch sa vieme dostaviť aj v ten istý deň.",
+        "Technika aj tím sú priamo v meste, takže obhliadku a realizáciu často zvládneme v jeden deň. Pri haváriách sa vieme dostaviť ešte v ten istý deň.",
       localFaq: [
         {
           q: "Vŕtate aj v panelových bytoch vo Zvolene?",
@@ -80,7 +80,7 @@ const published: City[] = [
       buildingStock:
         "V Banskej Bystrici prevažujú rozsiahle panelové sídliská, kde riešime prestupy pre klimatizácie a rozvody a rezanie bytových jadier. K tomu pristupuje historické jadro s tehlovým a zmiešaným murivom a administratívne budovy, kde je potrebné pracovať bez narušenia prevádzky.",
       responseInfo:
-        "Do Banskej Bystrice sa dostavíme spravidla do 24 hodín od dohody. Pri menších zákazkách vieme obhliadku spojiť priamo s realizáciou.",
+        "Do Banskej Bystrice je to po R1 necelú polhodinu. Pri menších zákazkách vieme obhliadku spojiť priamo s realizáciou, takže vás nezdržia dve návštevy.",
       localFaq: [
         {
           q: "Vŕtate na sídliskách ako Sásová alebo Fončorda?",
@@ -107,7 +107,7 @@ const published: City[] = [
       buildingStock:
         "Bratislava je z hľadiska konštrukcií najrozmanitejšie mesto na Slovensku. V Petržalke, ktorá patrí k najväčším panelovým sídliskám v strednej Európe, riešime najmä prestupy pre klimatizácie, rekuperáciu a rezanie bytových jadier. V Starom Meste narážame na tehlové a zmiešané murivo z prelomu storočí, kde je potrebný citlivejší postup, a v novostavbách a administratívnych budovách na husto vystužený železobetón, ktorý zvláda len diamantová technika.",
       responseInfo:
-        "Bratislava je od najbližšej pobočky najďalej, preto termíny plánujeme dopredu a zákazky v regióne spravidla spájame do jedného výjazdu. Vďaka tomu vieme držať ceny na rovnakej úrovni ako v okolí Zvolena. Pri väčších projektoch prichádzame na obhliadku vopred.",
+        "Zákazky v Bratislave a okolí spájame do jedného výjazdu, takže ceny držíme na rovnakej úrovni ako v iných regiónoch. Pri väčších projektoch prichádzame na obhliadku vopred.",
       localFaq: [
         {
           q: "Vŕtate aj v panelákoch v Petržalke?",
@@ -133,7 +133,7 @@ const published: City[] = [
       buildingStock:
         "Nitra kombinuje rozsiahle panelové sídliská zo 70. a 80. rokov, kde riešime prestupy pre rozvody a klimatizácie, so staršou zástavbou pod Nitrianskym hradom, kde prevažuje tehla a zmiešané murivo. Osobitnou kapitolou sú haly v priemyselnej zóne – tam ide najčastejšie o vývrty veľkých priemerov cez železobetónové panely pre technologické rozvody.",
       responseInfo:
-        "Do Nitry vyrážame pravidelne, termín vieme spravidla dohodnúť v priebehu niekoľkých dní. Pri menších zákazkách sa snažíme obhliadku spojiť priamo s realizáciou, aby ste nemuseli čakať na dva výjazdy.",
+        "Do Nitry jazdíme po R1 cez Žiar nad Hronom a Zlaté Moravce. Pri menších zákazkách sa snažíme obhliadku spojiť priamo s realizáciou, aby ste nečakali na dva výjazdy.",
       localFaq: [
         {
           q: "Robíte aj vŕtanie vo výrobných halách v Nitre?",
@@ -154,7 +154,7 @@ const published: City[] = [
       buildingStock:
         "V Lučenci sa stretávame s panelovými bytovými domami na sídliskách Rúbanisko I až III, kde riešime prestupy pre klimatizácie a nové rozvody, a so staršou tehlovou zástavbou v centre, kde je murivo často nehomogénne a vyžaduje opatrnejší postup. V okolitých obciach Novohradu prevažujú rodinné domy s kamennými a zmiešanými základmi.",
       responseInfo:
-        "Do Lučenca sa dostaneme spravidla do dvoch dní od dohody. Ak riešite havarijný stav, skúste nám zavolať – vieme zareagovať aj rýchlejšie.",
+        "Do Lučenca vedie cesta cez Kriváň a Mýtnu. Ak riešite havarijný stav, skúste nám zavolať – vieme zareagovať aj rýchlejšie.",
       localFaq: [
         {
           q: "Vŕtate v panelákoch na Rúbanisku?",
@@ -179,7 +179,7 @@ const published: City[] = [
       buildingStock:
         "V Brezne prevažujú menšie panelové bytové domy a rodinná zástavba, k tomu staršie murované objekty v centre. V rekreačných objektoch v okolí sa často stretávame s kamenným murivom a betónovými základmi, kde je jadrové vŕtanie jediný rozumný spôsob, ako spraviť prestup bez narušenia konštrukcie.",
       responseInfo:
-        "Brezno je od najbližšej pobočky dostupné po hlavnej ceste cez Banskú Bystricu. Termín vieme spravidla dohodnúť do dvoch až troch dní.",
+        "Brezno je dostupné po hlavnom ťahu cez Banskú Bystricu popri Hrone. Zákazky na Horehroní spájame do jednej cesty.",
       localFaq: [
         {
           q: "Poradíte si so staršou murovanou zástavbou v centre?",
@@ -204,7 +204,7 @@ const published: City[] = [
       buildingStock:
         "Ružomberok má rozsiahle panelové sídliská Baničné a Klačno, kde riešime prestupy pre rozvody, klimatizácie a rekuperáciu. V centre a v starších štvrtiach prevažuje tehlové murivo. Mesto má zároveň silné priemyselné zázemie, takže časť zákaziek tvoria vývrty a rezy v halách a technologických objektoch.",
       responseInfo:
-        "Do Ružomberka jazdíme cez Banskú Bystricu a Donovaly. Termíny plánujeme spravidla s niekoľkodňovým predstihom a zákazky na Liptove radi spájame do jedného výjazdu.",
+        "Do Ružomberka jazdíme cez Banskú Bystricu a Donovaly. Väčšie zákazky vieme rozdeliť do etáp tak, aby prevádzka objektu pokračovala.",
       localFaq: [
         {
           q: "Pracujete na sídliskách Baničné a Klačno?",
@@ -229,7 +229,7 @@ const published: City[] = [
       buildingStock:
         "V Detve nájdeme panelové bytové domy zo 70. a 80. rokov postavené súbežne s rozvojom miestneho strojárskeho priemyslu, k tomu rozsiahlu rodinnú zástavbu a typické podpolianske usadlosti v okolitých obciach, kde sa často stretávame s kamenným murivom a starými betónovými základmi.",
       responseInfo:
-        "Detva patrí spolu so Zvolenom k našim najrýchlejšie dostupným lokalitám. Obhliadku aj realizáciu často stihneme v ten istý deň.",
+        "Detva leží na hlavnom ťahu na Podpoľanie, pár minút od nás. Presný čas príchodu vieme potvrdiť deň vopred.",
       localFaq: [
         {
           q: "Vŕtate aj v objektoch miestneho strojárskeho priemyslu?",
@@ -250,11 +250,11 @@ const published: City[] = [
     geo: { lat: 48.5906, lng: 18.8531 },
     content: {
       localIntro:
-        "V Žiari nad Hronom realizujeme jadrové vŕtanie a rezanie stavebných otvorov pre bytové domy, rodinné domy aj pre prevádzky v priemyselnom areáli. Mesto je od Zvolena blízko po hlavnom ťahu údolím Hrona, takže termíny vieme držať krátke.",
+        "V Žiari nad Hronom realizujeme jadrové vŕtanie a rezanie stavebných otvorov pre bytové domy, rodinné domy aj pre prevádzky v priemyselnom areáli. Mesto máme po hlavnom ťahu údolím Hrona na dosah, takže termíny vieme držať krátke.",
       buildingStock:
         "Žiar nad Hronom je typické mesto vybudované okolo priemyslu – prevažujú tu panelové bytové domy postavené pre zamestnancov závodu, kde riešime najmä prestupy pre klimatizácie, rekuperáciu a nové rozvody. Priemyselný areál prináša zákazky iného charakteru: vývrty veľkých priemerov cez železobetón a rezy v podlahách a technologických konštrukciách.",
       responseInfo:
-        "Do Žiaru nad Hronom sa dostaneme po hlavnej ceste údolím Hrona. Termín vieme spravidla dohodnúť do 24 až 48 hodín.",
+        "Do Žiaru nad Hronom sa dostaneme po R1 údolím Hrona. V priemyselných areáloch vieme pracovať aj mimo bežných prevádzkových hodín.",
       localFaq: [
         {
           q: "Robíte prestupy v priemyselných halách?",
@@ -279,7 +279,7 @@ const published: City[] = [
       buildingStock:
         "V Malackách prevažuje nižšia zástavba – rodinné domy a menšie bytové domy, doplnené o novšie logistické a výrobné haly na okraji mesta. V starších objektoch v centre narazíme na tehlové murivo, v halách naopak na hrubé železobetónové podlahy a panely.",
       responseInfo:
-        "Malacky sú od najbližšej pobočky na opačnej strane republiky, preto zákazky na Záhorí plánujeme dopredu a spájame ich do jedného výjazdu.",
+        "Malacky ležia na Záhorí za Bratislavou. Cestu sem spájame s bratislavskými zákazkami, takže sa doprava rozpustí vo väčšom celku.",
       localFaq: [
         {
           q: "Vŕtate aj v nových logistických a výrobných halách?",
@@ -304,7 +304,7 @@ const published: City[] = [
       buildingStock:
         "Pezinok kombinuje historické jadro s hrubým tehlovým a kamenným murivom, rodinnú zástavbu v podhorí a menšie panelové sídliská. Vo vinárskych objektoch a pivniciach sa často stretávame s klenbami a kamenným murivom, kde je vŕtanie bez otrasov jediná bezpečná možnosť.",
       responseInfo:
-        "Do Pezinka jazdíme v rámci výjazdov do bratislavského regiónu, termín preto dohadujeme s niekoľkodňovým predstihom.",
+        "Pezinok riešime v rámci ciest do bratislavského regiónu. Vo výrobných a vinárskych prevádzkach vieme pracovať aj mimo otváracích hodín.",
       localFaq: [
         {
           q: "Vŕtate aj v historickom jadre?",
@@ -329,7 +329,7 @@ const published: City[] = [
       buildingStock:
         "V Senci prevažujú novostavby s betónovými a železobetónovými konštrukciami a tvárnicovým murivom. V okolí jazier pribúdajú rekreačné objekty, kde ide najmä o prestupy pre vodu a kanalizáciu cez základové pásy.",
       responseInfo:
-        "Senec riešime spolu s ostatnými zákazkami v bratislavskom regióne, termín plánujeme dopredu.",
+        "Senec leží kúsok za Bratislavou pri diaľnici D1. Cestu sem spájame s ďalšími zákazkami v regióne, čo sa prejaví aj na cene.",
       localFaq: [
         {
           q: "Riešite novostavby s tvárnicovým murivom?",
@@ -355,7 +355,7 @@ const published: City[] = [
       buildingStock:
         "Trnava má opevnené historické jadro s hrubým tehlovým murivom, kde je potrebný opatrný postup, a k tomu rozsiahle panelové sídliská z druhej polovice minulého storočia. Priemyselné zázemie mesta prináša zákazky s hrubým železobetónom a podlahovými rezmi.",
       responseInfo:
-        "Do Trnavy jazdíme po diaľnici cez Nitru. Termíny plánujeme spravidla s niekoľkodňovým predstihom.",
+        "Do Trnavy jazdíme po R1 cez Nitru. Väčšie zákazky rozdelíme do etáp tak, aby prevádzka objektu pokračovala.",
       localFaq: [
         {
           q: "Dá sa vŕtať v opevnenom historickom jadre?",
@@ -380,7 +380,7 @@ const published: City[] = [
       buildingStock:
         "Zástavba na Žitnom ostrove je prevažne nízka – rodinné domy a menšie bytové domy. Špecifikom regiónu je vysoká hladina podzemnej vody, s ktorou treba počítať pri prestupoch cez základy a podlahy suterénov.",
       responseInfo:
-        "Dunajská Streda je od nás vzdialenejšia, preto zákazky v regióne spájame a termín dohadujeme dopredu.",
+        "Dunajská Streda leží na Žitnom ostrove za Bratislavou. Zákazky na juhozápade spájame do jednej cesty.",
       localFaq: [
         {
           q: "Ako riešite prestupy pri vysokej hladine spodnej vody?",
@@ -405,7 +405,7 @@ const published: City[] = [
       buildingStock:
         "V Galante nájdeme panelové bytové domy zo 70. a 80. rokov spolu s rozsiahlou rodinnou zástavbou na rovinatom teréne Podunajskej nížiny. V priemyselných objektoch ide najčastejšie o vývrty cez železobetónové podlahy a panely.",
       responseInfo:
-        "Galantu riešime v rámci výjazdov do západoslovenského regiónu, termín preto dohadujeme vopred.",
+        "Do Galanty jazdíme cez Nitru a Šaľu. Vo výrobných areáloch vieme prísť aj mimo bežných prevádzkových hodín.",
       localFaq: [
         {
           q: "Vŕtate v panelákoch aj v rodinných domoch?",
@@ -430,7 +430,7 @@ const published: City[] = [
       buildingStock:
         "Hlohovec má staršie jadro s tehlovým murivom rozložené nad Váhom a k tomu panelové bytové domy na svahovitom teréne. Farmaceutický a potravinársky priemysel v okolí prináša zákazky v technologických objektoch s hrubým železobetónom.",
       responseInfo:
-        "Do Hlohovca jazdíme v rámci výjazdov na západné Slovensko, termín plánujeme s predstihom.",
+        "Do Hlohovca jazdíme po R1 cez Nitru. Vo výrobných areáloch vieme prísť aj mimo bežnej prevádzky.",
       localFaq: [
         {
           q: "Vŕtate aj v domoch na svahu nad Váhom?",
@@ -455,7 +455,7 @@ const published: City[] = [
       buildingStock:
         "Piešťany majú okrem bežnej panelovej a rodinnej zástavby aj množstvo kúpeľných a hotelových budov, medzi nimi historické vily a objekty na kúpeľnom ostrove. V takýchto prevádzkach oceníte, že diamantová technika pracuje bez otrasov a s minimom hluku.",
       responseInfo:
-        "Do Piešťan jazdíme po hlavnom ťahu popri Váhu. Termíny dohadujeme dopredu, v kúpeľných objektoch vieme prispôsobiť čas prác prevádzke.",
+        "Do Piešťan jazdíme po hlavnom ťahu popri Váhu. V kúpeľných a ubytovacích objektoch prispôsobíme čas prác prevádzke.",
       localFaq: [
         {
           q: "Dá sa vŕtať v kúpeľnom alebo hotelovom objekte počas prevádzky?",
@@ -480,7 +480,7 @@ const published: City[] = [
       buildingStock:
         "V Senici prevažujú panelové bytové domy a rodinná zástavba, doplnené o výrobné haly na okraji mesta. V halách ide najčastejšie o veľkopriemerové vývrty pre technologické rozvody a rezy do betónových podláh.",
       responseInfo:
-        "Senica je od najbližšej pobočky vzdialenejšia, preto zákazky na Záhorí spájame do jedného výjazdu.",
+        "Senica leží na Záhorí pri ceste na Moravu. Cestu sem spájame so Skalicou a Myjavou.",
       localFaq: [
         {
           q: "Robíte prestupy vo výrobných halách?",
@@ -505,7 +505,7 @@ const published: City[] = [
       buildingStock:
         "Skalica má zachované historické jadro s hrubým tehlovým a kamenným murivom a k tomu novšiu zástavbu na okrajoch. V pivniciach a vinárskych objektoch sa stretávame s klenbami, kde je vŕtanie bez otrasov nevyhnutnosťou.",
       responseInfo:
-        "Skalicu riešime v rámci výjazdov na Záhorie, termín preto dohadujeme dopredu.",
+        "Skalica je na severnom Záhorí pri hraniciach s Českom. Väčšie objemy prác tu vieme urobiť aj na niekoľko dní po sebe.",
       localFaq: [
         {
           q: "Ako postupujete v historickom jadre Skalice?",
@@ -531,7 +531,7 @@ const published: City[] = [
       buildingStock:
         "Trenčín má historické jadro pod hradným bralom s hrubým kamenným a tehlovým murivom a k tomu veľké panelové sídliská, predovšetkým Juh. V starších objektoch v centre je murivo často nehomogénne a vyžaduje opatrnejší postup.",
       responseInfo:
-        "Do Trenčína jazdíme po hlavnom ťahu Považím. Termíny plánujeme s niekoľkodňovým predstihom.",
+        "Do Trenčína jazdíme cez Prievidzu a Bánovce nad Bebravou. Väčšie zákazky delíme do etáp, aby chod objektu pokračoval bez prerušenia.",
       localFaq: [
         {
           q: "Vŕtate pod hradným bralom v starom jadre?",
@@ -556,7 +556,7 @@ const published: City[] = [
       buildingStock:
         "V Bánovciach prevažujú panelové bytové domy postavené súbežne s rozvojom miestneho priemyslu a rozsiahla rodinná zástavba. V okolitých obciach sa často stretávame so staršími objektmi s kamennými základmi.",
       responseInfo:
-        "Bánovce riešime v rámci výjazdov na stredné Považie, termín dohadujeme dopredu.",
+        "Bánovce ležia na hornom Ponitrí, jazdíme sem cez Prievidzu. Cestu sem spájame s výjazdmi do Trenčína a Partizánskeho.",
       localFaq: [
         {
           q: "Vŕtate aj v priemyselných objektoch?",
@@ -581,7 +581,7 @@ const published: City[] = [
       buildingStock:
         "Ilava je menšie mesto s historickým jadrom, menšími bytovými domami a rodinnou zástavbou v úzkom údolí Váhu. V starších objektoch prevažuje tehlové a kamenné murivo.",
       responseInfo:
-        "Ilavu riešime spolu s ostatnými zákazkami na Považí, termín preto plánujeme dopredu.",
+        "Do Ilavy jazdíme Považím cez Trenčín. V priemyselných objektoch pracujeme aj počas prevádzky, bez odstavenia liniek.",
       localFaq: [
         {
           q: "Vŕtate aj v priemyselných objektoch v okolí Ilavy?",
@@ -606,7 +606,7 @@ const published: City[] = [
       buildingStock:
         "Myjavu charakterizuje kombinácia mestskej zástavby a rozptýlených kopaničiarskych usadlostí v okolí. V starších usadlostiach prevažuje kamenné a zmiešané murivo, kde je jadrové vŕtanie jediný spôsob, ako spraviť čistý prestup.",
       responseInfo:
-        "Myjava je od nás vzdialenejšia, zákazky v regióne preto spájame do jedného výjazdu.",
+        "Myjava leží v kopcoch medzi Považím a Záhorím. Prístup k objektu a možnosti parkovania si radi overíme vopred.",
       localFaq: [
         {
           q: "Prídete aj na kopanice mimo mesta?",
@@ -631,7 +631,7 @@ const published: City[] = [
       buildingStock:
         "Mesto kombinuje staršie jadro s tehlovým murivom, panelové bytové domy a priemyselné areály na okraji. V halách riešime najmä vývrty väčších priemerov cez železobetón a rezy do podláh.",
       responseInfo:
-        "Do Nového Mesta jazdíme po hlavnom ťahu Považím, termín plánujeme s predstihom.",
+        "Do Nového Mesta jazdíme po hlavnom ťahu Považím. Cestu sem spájame s Piešťanmi a Trenčínom.",
       localFaq: [
         {
           q: "Robíte prestupy v priemyselných areáloch na okraji mesta?",
@@ -656,7 +656,7 @@ const published: City[] = [
       buildingStock:
         "Partizánske je mesto vybudované ako plánovaný celok okolo obuvníckeho priemyslu, takže má nezvyčajne jednotnú funkcionalistickú zástavbu z tehly a betónu, doplnenú o neskoršie panelové domy. V priemyselnom areáli ide o hrubé železobetónové konštrukcie.",
       responseInfo:
-        "Partizánske riešime v rámci výjazdov na horné Ponitrie, termín dohadujeme dopredu.",
+        "Partizánske leží na hornom Ponitrí, dostaneme sa sem cez Prievidzu. Vo výrobných halách vieme prísť aj mimo bežných pracovných hodín.",
       localFaq: [
         {
           q: "Má jednotná zástavba mesta vplyv na vŕtanie?",
@@ -681,7 +681,7 @@ const published: City[] = [
       buildingStock:
         "Považská Bystrica má rozsiahle panelové sídliská postavené pre zamestnancov miestneho strojárstva a k tomu veľké priemyselné areály. V bytových domoch riešime prestupy pre klimatizácie a rozvody, v halách vývrty cez hrubý železobetón.",
       responseInfo:
-        "Do Považskej Bystrice jazdíme Považím. Termíny plánujeme s niekoľkodňovým predstihom.",
+        "Do Považskej Bystrice jazdíme Považím cez Žilinu. Zákazky v regióne spájame do jedného výjazdu.",
       localFaq: [
         {
           q: "Vŕtate v panelákoch postavených pre strojárov?",
@@ -706,7 +706,7 @@ const published: City[] = [
       buildingStock:
         "Prievidza má rozsiahle panelové sídliská z obdobia rozmachu baníctva na hornej Nitre, k tomu staršiu murovanú zástavbu v centre. Priemyselné a energetické objekty v okolí prinášajú zákazky s hrubým železobetónom a podlahovými rezmi.",
       responseInfo:
-        "Do Prievidze jazdíme cez Žiar nad Hronom. Termín vieme spravidla dohodnúť v priebehu niekoľkých dní.",
+        "Do Prievidze je to cez Žiar nad Hronom a Handlovú necelú hodinu. Pri menších zákazkách vieme obhliadku spojiť priamo s realizáciou.",
       localFaq: [
         {
           q: "Vŕtate na sídliskách na hornej Nitre?",
@@ -731,7 +731,7 @@ const published: City[] = [
       buildingStock:
         "Púchov má panelové bytové domy postavené pre zamestnancov gumárenského priemyslu a rozsiahly priemyselný areál. V halách ide najčastejšie o veľkopriemerové vývrty pre technologické rozvody a rezy do betónových podláh.",
       responseInfo:
-        "Púchov riešime v rámci výjazdov na Považie, termín preto dohadujeme dopredu.",
+        "Púchov leží na Považí medzi Ilavou a Považskou Bystricou. Rozsah prác si upresníme telefonicky, aby sme prišli s pripravenou technikou.",
       localFaq: [
         {
           q: "Robíte prestupy v gumárenskom areáli?",
@@ -756,7 +756,7 @@ const published: City[] = [
       buildingStock:
         "Komárno má historické jadro s hrubým tehlovým murivom a rozsiahly pevnostný systém, k tomu panelové bytové domy a priemyselné objekty pri Dunaji. Pri prácach v blízkosti rieky treba počítať s vysokou hladinou podzemnej vody.",
       responseInfo:
-        "Komárno je od nás vzdialenejšie, zákazky v regióne preto spájame do jedného výjazdu.",
+        "Komárno leží na Dunaji na juhu republiky. Vodu aj elektriku si v prípade potreby vieme zabezpečiť sami.",
       localFaq: [
         {
           q: "Dá sa vŕtať v pevnostných objektoch a starom jadre?",
@@ -781,7 +781,7 @@ const published: City[] = [
       buildingStock:
         "Levice kombinujú panelové sídliská, staršiu murovanú zástavbu v centre a rozsiahlu rodinnú zástavbu. Energetické a priemyselné objekty v okolí prinášajú zákazky s hrubým železobetónom, kde sa uplatní veľkopriemerové vŕtanie.",
       responseInfo:
-        "Do Levíc jazdíme Pohroním. Termín vieme spravidla dohodnúť v priebehu niekoľkých dní.",
+        "Do Levíc jazdíme Pohroním cez Žarnovicu a Tlmače. Pri väčších zákazkách prídeme na obhliadku vopred.",
       localFaq: [
         {
           q: "Vŕtate aj v energetických a priemyselných objektoch?",
@@ -806,7 +806,7 @@ const published: City[] = [
       buildingStock:
         "Nové Zámky majú panelové sídliská, staršiu murovanú zástavbu v centre a rozsiahlu rodinnú zástavbu na rovine Podunajskej nížiny. V bytových domoch riešime najmä prestupy pre klimatizácie a nové rozvody.",
       responseInfo:
-        "Nové Zámky riešime v rámci výjazdov na juhozápadné Slovensko, termín dohadujeme dopredu.",
+        "Do Nových Zámkov jazdíme cez Levice a Podunajskú nížinu. Zákazky na juhu regiónu spájame do jednej cesty.",
       localFaq: [
         {
           q: "Vŕtate na sídliskách aj v rodinnej zástavbe?",
@@ -831,7 +831,7 @@ const published: City[] = [
       buildingStock:
         "Šaľa má panelové bytové domy postavené pre zamestnancov chemického priemyslu a rozsiahlu rodinnú zástavbu. V technologických objektoch ide o hrubé železobetónové konštrukcie, kde je diamantová technika jedinou možnosťou.",
       responseInfo:
-        "Šaľu riešime v rámci výjazdov na západné Slovensko, termín preto plánujeme dopredu.",
+        "Šaľa leží na dolnom Považí, jazdíme sem cez Nitru. Vo výrobných areáloch vieme pracovať aj mimo prevádzkových hodín.",
       localFaq: [
         {
           q: "Pracujete aj v objektoch chemického areálu?",
@@ -856,7 +856,7 @@ const published: City[] = [
       buildingStock:
         "Topoľčany majú panelové sídliská a rozsiahlu rodinnú zástavbu na rovinatom teréne. V potravinárskych a výrobných objektoch v okolí riešime prestupy pre technologické rozvody cez železobetónové podlahy a steny.",
       responseInfo:
-        "Do Topoľčian jazdíme cez Nitru, termín plánujeme s niekoľkodňovým predstihom.",
+        "Do Topoľčian jazdíme cez Zlaté Moravce a Nitru. Presný čas príchodu si potvrdíme deň vopred.",
       localFaq: [
         {
           q: "Robíte prestupy v potravinárskych prevádzkach?",
@@ -881,7 +881,7 @@ const published: City[] = [
       buildingStock:
         "Zlaté Moravce sú menšie mesto s panelovými bytovými domami a prevažujúcou rodinnou zástavbou. V okolitých obciach pod Tribečom sa často stretávame so staršími objektmi s kamennými základmi.",
       responseInfo:
-        "Zlaté Moravce riešime v rámci výjazdov do nitrianskeho regiónu, termín dohadujeme dopredu.",
+        "Zlaté Moravce ležia priamo na R1 medzi Žiarom nad Hronom a Nitrou. Cestu sem preto často spájame s nitrianskymi zákazkami.",
       localFaq: [
         {
           q: "Prídete aj do okolitých obcí?",
@@ -907,7 +907,7 @@ const published: City[] = [
       buildingStock:
         "Žilina má jedny z najrozsiahlejších panelových sídlisk na severe Slovenska, k tomu historické jadro s tehlovým murivom a veľké priemyselné areály v okolí. V halách ide o vývrty väčších priemerov cez hrubý železobetón.",
       responseInfo:
-        "Do Žiliny jazdíme cez Banskú Bystricu a Martin. Termíny plánujeme s niekoľkodňovým predstihom a zákazky na severe spájame.",
+        "Do Žiliny jazdíme cez Banskú Bystricu a Martin. V administratívnych a obchodných objektoch vieme pracovať aj mimo otváracích hodín.",
       localFaq: [
         {
           q: "Vŕtate na veľkých žilinských sídliskách?",
@@ -932,7 +932,7 @@ const published: City[] = [
       buildingStock:
         "Bytča je menšie mesto s historickým jadrom pri renesančnom zámku, menšími bytovými domami a rodinnou zástavbou. V starších objektoch prevažuje kamenné a tehlové murivo.",
       responseInfo:
-        "Bytču riešime v rámci výjazdov na severné Považie, termín preto dohadujeme dopredu.",
+        "Bytča leží na severnom Považí kúsok za Žilinou. Zákazky tu spájame so žilinskými výjazdmi.",
       localFaq: [
         {
           q: "Poradíte si s kamenným murivom v starších domoch v Bytči?",
@@ -957,7 +957,7 @@ const published: City[] = [
       buildingStock:
         "Čadca leží v úzkom údolí, takže zástavba je natiahnutá pozdĺž rieky – panelové bytové domy v meste a rodinné domy vo svahoch. V starších kysuckých domoch sa často stretávame s kamennými základmi a zmiešaným murivom.",
       responseInfo:
-        "Čadca je od najbližšej pobočky vzdialenejšia, zákazky na Kysuciach preto spájame do jedného výjazdu.",
+        "Do Čadce jazdíme cez Žilinu a Kysucké Nové Mesto. Kysucké zákazky plánujeme ako jednu cestu.",
       localFaq: [
         {
           q: "Dostanete sa aj k domom vo svahu nad údolím?",
@@ -982,7 +982,7 @@ const published: City[] = [
       buildingStock:
         "Dolný Kubín má panelové sídliská postavené v svahovitom teréne nad Oravou a k tomu staršiu murovanú zástavbu v centre. V okolitých oravských obciach prevažujú rodinné domy s kamennými základmi.",
       responseInfo:
-        "Na Oravu jazdíme cez Ružomberok. Termíny plánujeme dopredu a oravské zákazky spájame.",
+        "Na Oravu jazdíme cez Ružomberok a Kraľovany. Oravské zákazky spájame do jedného výjazdu.",
       localFaq: [
         {
           q: "Vŕtate v panelákoch postavených v svahu?",
@@ -1007,7 +1007,7 @@ const published: City[] = [
       buildingStock:
         "Kysucké Nové Mesto má panelové bytové domy postavené pre zamestnancov miestneho strojárskeho závodu a k tomu rodinnú zástavbu v okolitých svahoch. V halách ide o vývrty cez hrubý železobetón.",
       responseInfo:
-        "Kysucké Nové Mesto riešime spolu s ostatnými zákazkami na Kysuciach, termín dohadujeme dopredu.",
+        "Kysucké Nové Mesto leží na ceste zo Žiliny na Kysuce. Cestu sem spájame s Čadcou a Žilinou.",
       localFaq: [
         {
           q: "Robíte prestupy v strojárskom závode?",
@@ -1032,7 +1032,7 @@ const published: City[] = [
       buildingStock:
         "Liptovský Mikuláš má rozsiahle panelové sídliská, staršie jadro s tehlovým murivom a k tomu veľké množstvo ubytovacích a rekreačných objektov v okolí Liptovskej Mary a pod Tatrami. V hoteloch oceníte prácu bez prachu a otrasov počas prevádzky.",
       responseInfo:
-        "Na Liptov jazdíme cez Ružomberok. Termíny plánujeme dopredu a zákazky v regióne spájame.",
+        "Na Liptov jazdíme cez Banskú Bystricu a Ružomberok. V ubytovacích a rekreačných objektoch prispôsobíme čas prác sezóne.",
       localFaq: [
         {
           q: "Dá sa vŕtať v penzióne počas sezóny?",
@@ -1057,7 +1057,7 @@ const published: City[] = [
       buildingStock:
         "Martin má rozsiahle panelové sídliská postavené pre zamestnancov ťažkého strojárstva a k tomu historické jadro. Priemyselné areály v meste prinášajú zákazky s veľmi hrubým železobetónom, kde je potrebná výkonná diamantová technika.",
       responseInfo:
-        "Do Martina jazdíme cez Banskú Bystricu. Termín vieme spravidla dohodnúť v priebehu niekoľkých dní.",
+        "Do Martina je to cez Kremnicu a Turčianske Teplice zhruba hodinu. Pri menších zákazkách vieme obhliadku spojiť s realizáciou.",
       localFaq: [
         {
           q: "Vŕtate v objektoch ťažkého strojárstva?",
@@ -1082,7 +1082,7 @@ const published: City[] = [
       buildingStock:
         "Námestovo má menšie panelové sídliská a rozsiahlu rodinnú zástavbu, doplnenú o rekreačné objekty pri priehrade. V starších oravských domoch prevažuje kamenné murivo a betónové základy.",
       responseInfo:
-        "Horná Orava je od najbližšej pobočky vzdialenejšia, zákazky v regióne preto spájame do jedného výjazdu.",
+        "Námestovo leží na hornej Orave, jazdíme sem cez Ružomberok a Dolný Kubín. Väčšie zákazky rozdelíme do etáp.",
       localFaq: [
         {
           q: "Prídete aj k rekreačným objektom pri priehrade?",
@@ -1107,7 +1107,7 @@ const published: City[] = [
       buildingStock:
         "Turčianske Teplice sú kúpeľné mesto s hotelovými a kúpeľnými budovami, menšími bytovými domami a rodinnou zástavbou. V kúpeľných objektoch je dôležité pracovať potichu a bez prachu počas prevádzky.",
       responseInfo:
-        "Turčianske Teplice ležia na ceste do Martina, termín preto vieme spravidla dohodnúť pomerne rýchlo.",
+        "Turčianske Teplice ležia na ceste cez Kremnické vrchy smerom na Martin. V kúpeľných a ubytovacích objektoch prispôsobíme čas prác prevádzke.",
       localFaq: [
         {
           q: "Dá sa vŕtať v kúpeľnej budove počas prevádzky?",
@@ -1132,7 +1132,7 @@ const published: City[] = [
       buildingStock:
         "Tvrdošín je menšie oravské mesto s panelovými bytovými domami a prevažujúcou rodinnou zástavbou. V okolitých obciach sa stretávame so staršími objektmi s kamennými základmi a zmiešaným murivom.",
       responseInfo:
-        "Tvrdošín riešime v rámci oravských výjazdov, termín dohadujeme dopredu.",
+        "Tvrdošín je na hornej Orave pri ceste na Poľsko. Cestu sem spájame s ostatnými oravskými zákazkami.",
       localFaq: [
         {
           q: "Prídete aj do okolitých oravských obcí?",
@@ -1157,7 +1157,7 @@ const published: City[] = [
       buildingStock:
         "Banská Štiavnica je historické banské mesto zapísané v zozname UNESCO – prevažuje tu hrubé kamenné a zmiešané murivo, klenby a objekty postavené v strmom teréne. Práve tu má diamantové vŕtanie bez otrasov najväčší význam, pretože klasické búranie by konštrukciu ohrozilo.",
       responseInfo:
-        "Banská Štiavnica je od Zvolena blízko, termín vieme spravidla dohodnúť do dvoch dní. Pri pamiatkovo chránených objektoch odporúčame obhliadku vopred.",
+        "Banskú Štiavnicu máme za kopcom, jazdíme sem cez Svätý Anton. Pri pamiatkovo chránených objektoch odporúčame obhliadku vopred.",
       localFaq: [
         {
           q: "Dá sa vôbec vŕtať v pamiatkovej zóne UNESCO?",
@@ -1182,7 +1182,7 @@ const published: City[] = [
       buildingStock:
         "Krupina patrí k najstarším mestám na Slovensku, takže v centre nájdeme hrubé kamenné a tehlové murivo. Okolo neho je rozsiahla rodinná zástavba a menšie bytové domy, v okolitých hontianskych obciach staršie objekty s kamennými základmi.",
       responseInfo:
-        "Krupina je od Zvolena blízko po hlavnom ťahu, termín vieme spravidla dohodnúť do 24 až 48 hodín.",
+        "Krupina leží na hlavnom ťahu zo Zvolena na juh. V starších domoch v centre vieme pracovať aj v stiesnených priestoroch, techniku prispôsobíme prístupu.",
       localFaq: [
         {
           q: "Poradíte si s murivom v jednom z najstarších miest?",
@@ -1207,7 +1207,7 @@ const published: City[] = [
       buildingStock:
         "Poltár je menšie mesto spojené so sklárskym priemyslom – nájdeme tu panelové bytové domy postavené pre zamestnancov závodu, rodinnú zástavbu a priemyselné haly s hrubými betónovými podlahami.",
       responseInfo:
-        "Poltár riešime spolu so zákazkami v okolí Lučenca, termín dohadujeme v priebehu niekoľkých dní.",
+        "Poltár leží medzi Lučencom a Rimavskou Sobotou. Zákazky tu spájame s výjazdmi do Novohradu.",
       localFaq: [
         {
           q: "Vŕtate aj v objektoch sklárskeho priemyslu?",
@@ -1232,7 +1232,7 @@ const published: City[] = [
       buildingStock:
         "Revúca má staršie murované jadro, menšie panelové bytové domy a rozsiahlu rodinnú zástavbu. V okolitých gemerských obciach sa často stretávame s kamenným murivom a starými betónovými základmi.",
       responseInfo:
-        "Revúca je od najbližšej pobočky vzdialenejšia, zákazky v Gemeri preto spájame do jedného výjazdu.",
+        "Do Revúcej jazdíme cez Tisovec popod Muránsku planinu. Väčšie zákazky v Gemeri plánujeme ako jednu cestu.",
       localFaq: [
         {
           q: "Prídete aj do gemerských obcí v okolí?",
@@ -1257,7 +1257,7 @@ const published: City[] = [
       buildingStock:
         "Rimavská Sobota má zachované historické jadro s hrubým tehlovým murivom, panelové sídliská a rozsiahlu rodinnú zástavbu na rovine. V poľnohospodárskych objektoch v okolí ide najmä o prestupy cez betónové podlahy a steny.",
       responseInfo:
-        "Do Rimavskej Soboty jazdíme cez Lučenec, termín plánujeme s niekoľkodňovým predstihom.",
+        "Do Rimavskej Soboty jazdíme cez Lučenec po R2. V priemyselných areáloch vieme prísť aj mimo prevádzkových hodín.",
       localFaq: [
         {
           q: "Vŕtate v historickom jadre aj na sídliskách?",
@@ -1282,7 +1282,7 @@ const published: City[] = [
       buildingStock:
         "Veľký Krtíš je mesto, ktoré vyrástlo s rozvojom baníctva v regióne – prevažujú tu panelové bytové domy z toho obdobia a rodinná zástavba. V okolitých obciach sú staršie objekty s kamennými základmi.",
       responseInfo:
-        "Veľký Krtíš riešime v rámci výjazdov do Novohradu, termín dohadujeme dopredu.",
+        "Veľký Krtíš leží v Novohrade, jazdíme sem cez Krupinu. Presný čas príchodu potvrdíme deň vopred.",
       localFaq: [
         {
           q: "Vŕtate v panelákoch z obdobia baníctva?",
@@ -1307,7 +1307,7 @@ const published: City[] = [
       buildingStock:
         "Žarnovica je menšie mesto v údolí Hrona s menšími bytovými domami, rodinnou zástavbou a priemyselnými objektmi na okraji. V starších objektoch prevažuje tehlové a zmiešané murivo.",
       responseInfo:
-        "Žarnovica leží na hlavnom ťahu údolím Hrona, termín preto vieme dohodnúť pomerne rýchlo.",
+        "Žarnovica leží priamo na R1 v údolí Hrona. Zákazky tu často spájame so Žiarom nad Hronom, takže sa k vám dostaneme skôr.",
       localFaq: [
         {
           q: "Robíte prestupy v priemyselných objektoch v údolí Hrona?",
@@ -1333,7 +1333,7 @@ const published: City[] = [
       buildingStock:
         "Prešov má rozsiahle panelové sídliská, ktoré patria k najväčším na východe Slovenska, a k tomu historické jadro s hrubým tehlovým murivom. V bytových domoch riešime najmä prestupy pre klimatizácie a rekuperáciu a rezanie bytových jadier.",
       responseInfo:
-        "Prešov je od najbližšej pobočky na východe republiky, preto termíny plánujeme dopredu a zákazky v regióne spájame do jedného výjazdu.",
+        "Do Prešova jazdíme cez Poprad a Levoču. Pri väčších projektoch prichádzame na obhliadku vopred.",
       localFaq: [
         {
           q: "Vŕtate na veľkých prešovských sídliskách?",
@@ -1358,7 +1358,7 @@ const published: City[] = [
       buildingStock:
         "Bardejov má mimoriadne zachované historické námestie zapísané v zozname UNESCO, kde prevažuje hrubé kamenné a tehlové murivo a je nutný citlivý postup. Okolo neho sú panelové sídliská a rodinná zástavba, k tomu kúpeľné objekty na okraji mesta.",
       responseInfo:
-        "Bardejov je od nás vzdialený, zákazky na severovýchode preto spájame do jedného výjazdu a plánujeme ich dopredu.",
+        "Bardejov leží na severovýchode pri poľských hraniciach. Pri pamiatkovo chránených objektoch v centre odporúčame obhliadku vopred.",
       localFaq: [
         {
           q: "Dá sa vŕtať v pamiatkovej zóne UNESCO?",
@@ -1383,7 +1383,7 @@ const published: City[] = [
       buildingStock:
         "Humenné má rozsiahle panelové sídliská postavené s rozvojom chemického priemyslu v regióne a k tomu staršiu murovanú zástavbu v centre. V priemyselných objektoch ide o hrubé železobetónové konštrukcie.",
       responseInfo:
-        "Humenné je od najbližšej pobočky vzdialené, termíny preto plánujeme dopredu a zákazky v regióne spájame.",
+        "Humenné je na východe republiky za Prešovom. Väčšie objemy prác tu robíme na niekoľko dní po sebe, aby sa cesta oplatila obom stranám.",
       localFaq: [
         {
           q: "Vŕtate v objektoch chemického priemyslu?",
@@ -1408,7 +1408,7 @@ const published: City[] = [
       buildingStock:
         "Kežmarok má zachované historické jadro s hrubým kamenným a tehlovým murivom, k tomu panelové bytové domy a rodinnú zástavbu. V podtatranských obciach pribúdajú rekreačné objekty.",
       responseInfo:
-        "Kežmarok riešime v rámci výjazdov na Spiš, termín preto dohadujeme dopredu.",
+        "Kežmarok leží pod Tatrami na Spiši. V hoteloch a penziónoch prispôsobíme čas prác sezóne a prevádzke.",
       localFaq: [
         {
           q: "Poradíte si s hrubým murivom v historickom jadre?",
@@ -1433,7 +1433,7 @@ const published: City[] = [
       buildingStock:
         "Levoča je mesto zapísané v zozname UNESCO s kompletne zachovaným historickým jadrom vnútri hradieb – prevažuje hrubé kamenné murivo a klenby. Práve tu je vŕtanie bez otrasov jediný prijateľný spôsob, ako spraviť prestup.",
       responseInfo:
-        "Levoču riešime v rámci spišských výjazdov, termín plánujeme dopredu. Pri pamiatkovo chránených objektoch odporúčame obhliadku vopred.",
+        "Do Levoče jazdíme cez Poprad. Pri pamiatkovo chránených objektoch odporúčame obhliadku vopred.",
       localFaq: [
         {
           q: "Dá sa vŕtať v jadre zapísanom v UNESCO?",
@@ -1458,7 +1458,7 @@ const published: City[] = [
       buildingStock:
         "Medzilaborce sú menšie mesto s panelovými bytovými domami a prevažujúcou rodinnou zástavbou v členitom teréne. V starších objektoch v okolí sa stretávame s kamenným murivom.",
       responseInfo:
-        "Medzilaborce patria k najvzdialenejším lokalitám, zákazky tu preto spájame a plánujeme s väčším predstihom.",
+        "Medzilaborce sú na severovýchodnom okraji republiky. Techniku aj materiál vozíme so sebou, na mieste nepotrebujeme nič zabezpečovať.",
       localFaq: [
         {
           q: "Prídete aj do obcí v členitom teréne?",
@@ -1483,7 +1483,7 @@ const published: City[] = [
       buildingStock:
         "Poprad má rozsiahle panelové sídliská a k tomu veľké množstvo ubytovacích a rekreačných objektov v celom podtatranskom regióne. V hoteloch a penziónoch oceníte, že pracujeme bez prachu a bez odstavenia prevádzky.",
       responseInfo:
-        "Poprad je od najbližšej pobočky vzdialenejší, termíny preto plánujeme dopredu a podtatranské zákazky spájame.",
+        "Do Popradu jazdíme cez Brezno a Horehronie. V hoteloch a penziónoch prispôsobíme čas prác prevádzke a sezóne.",
       localFaq: [
         {
           q: "Pracujete v hoteloch a penziónoch v Tatrách?",
@@ -1508,7 +1508,7 @@ const published: City[] = [
       buildingStock:
         "Sabinov má staršie murované jadro, menšie panelové bytové domy a rozsiahlu rodinnú zástavbu. V okolitých obciach prevažujú staršie objekty s kamennými základmi.",
       responseInfo:
-        "Sabinov riešime spolu so zákazkami v okolí Prešova, termín preto dohadujeme dopredu.",
+        "Sabinov leží severne od Prešova pri ceste na Bardejov. Cestu sem spájame s prešovskými zákazkami.",
       localFaq: [
         {
           q: "Vŕtate prestupy cez kamenné základy starších domov?",
@@ -1533,7 +1533,7 @@ const published: City[] = [
       buildingStock:
         "Snina má panelové bytové domy postavené s rozvojom miestneho strojárstva, rodinnú zástavbu a v okolí pribúdajúce rekreačné objekty. V starších domoch prevažuje kamenné a zmiešané murivo.",
       responseInfo:
-        "Snina patrí k najvzdialenejším lokalitám, zákazky na východe preto spájame a plánujeme dopredu.",
+        "Snina je na krajnom východe pri Poloninách. Zákazky tu plánujeme s väčším predstihom a spájame ich s Humenným.",
       localFaq: [
         {
           q: "Vŕtate aj v objektoch miestneho strojárstva?",
@@ -1558,7 +1558,7 @@ const published: City[] = [
       buildingStock:
         "Stará Ľubovňa má menšie panelové sídliská, staršiu murovanú zástavbu a rozsiahlu rodinnú zástavbu v členitom teréne. V okolitých obciach sa stretávame so staršími objektmi s kamennými základmi.",
       responseInfo:
-        "Starú Ľubovňu riešime v rámci spišských výjazdov, termín dohadujeme dopredu.",
+        "Stará Ľubovňa leží na severnom Spiši pri poľských hraniciach. Cestu sem spájame s Kežmarkom a Popradom.",
       localFaq: [
         {
           q: "Prídete aj k domom v členitom teréne?",
@@ -1583,7 +1583,7 @@ const published: City[] = [
       buildingStock:
         "Stropkov je menšie mesto s panelovými bytovými domami a prevažujúcou rodinnou zástavbou. V okolitých obciach prevažujú staršie objekty s kamennými základmi a zmiešaným murivom.",
       responseInfo:
-        "Stropkov je od najbližšej pobočky vzdialený, zákazky na severovýchode preto spájame do jedného výjazdu.",
+        "Stropkov je na severovýchode medzi Svidníkom a Humenným. Väčšie zákazky vieme rozdeliť na niekoľko dní po sebe.",
       localFaq: [
         {
           q: "Prídete aj do okolitých obcí?",
@@ -1608,7 +1608,7 @@ const published: City[] = [
       buildingStock:
         "Svidník je mesto z veľkej časti postavené po druhej svetovej vojne, takže prevažuje novšia panelová a murovaná zástavba. V okolitých obciach sa stretávame so staršími objektmi s kamennými základmi.",
       responseInfo:
-        "Svidník patrí k vzdialenejším lokalitám, termíny preto plánujeme s väčším predstihom.",
+        "Svidník leží pri Dukelskom priesmyku na severovýchode. Cestu sem spájame s Bardejovom a Stropkovom.",
       localFaq: [
         {
           q: "Aké konštrukcie v meste čakáte?",
@@ -1633,7 +1633,7 @@ const published: City[] = [
       buildingStock:
         "Vranov nad Topľou má panelové sídliská, staršiu murovanú zástavbu v centre a rozsiahlu rodinnú zástavbu. V priemyselných objektoch v okolí ide o vývrty cez železobetónové konštrukcie.",
       responseInfo:
-        "Vranov riešime v rámci výjazdov na východ, termín preto dohadujeme dopredu.",
+        "Vranov nad Topľou leží medzi Prešovom a Michalovcami. Zákazky na východe spájame do jedného výjazdu.",
       localFaq: [
         {
           q: "Vŕtate v priemyselných prevádzkach v okolí?",
@@ -1659,7 +1659,7 @@ const published: City[] = [
       buildingStock:
         "Košice majú jedny z najrozsiahlejších panelových sídlisk na Slovensku, kde riešime prestupy pre klimatizácie, rekuperáciu a rezanie bytových jadier. K tomu historické centrum s hrubým tehlovým murivom a rozsiahle priemyselné areály, kde ide o veľkopriemerové vývrty cez hrubý železobetón.",
       responseInfo:
-        "Košice sú od najbližšej pobočky vzdialené, preto termíny plánujeme dopredu a zákazky na východe spájame do jedného výjazdu. Pri väčších projektoch prichádzame na obhliadku vopred.",
+        "Do Košíc jazdíme cez Rožňavu alebo cez Poprad a Prešov. Pri väčších projektoch prichádzame na obhliadku vopred.",
       localFaq: [
         {
           q: "Vŕtate na košických sídliskách?",
@@ -1684,7 +1684,7 @@ const published: City[] = [
       buildingStock:
         "Gelnica je staré banské mesto v úzkom údolí – prevažuje tu staršia murovaná a kamenná zástavba, doplnená o menšie bytové domy. V starších objektoch je murivo často nehomogénne.",
       responseInfo:
-        "Gelnica je od najbližšej pobočky vzdialenejšia, zákazky v regióne preto spájame do jedného výjazdu.",
+        "Gelnica leží v Hnileckej doline medzi Spišskou Novou Vsou a Košicami. Prístup k objektu si overíme vopred.",
       localFaq: [
         {
           q: "Čo znamená nehomogénne murivo pre cenu a čas vŕtania?",
@@ -1709,7 +1709,7 @@ const published: City[] = [
       buildingStock:
         "Michalovce majú rozsiahle panelové sídliská a k tomu rodinnú zástavbu na rovine Východoslovenskej nížiny. Pri Zemplínskej šírave pribúdajú rekreačné objekty, kde ide najmä o prestupy pre vodu a kanalizáciu.",
       responseInfo:
-        "Michalovce sú od nás vzdialené, termíny preto plánujeme dopredu a východoslovenské zákazky spájame.",
+        "Michalovce sú na Zemplíne neďaleko Šíravy. V priemyselných areáloch vieme pracovať aj počas prevádzky.",
       localFaq: [
         {
           q: "Robíte prestupy v poľnohospodárskych objektoch?",
@@ -1734,7 +1734,7 @@ const published: City[] = [
       buildingStock:
         "Rožňava má zachované historické jadro so starým banským námestím, kde prevažuje hrubé kamenné a tehlové murivo. Okolo neho sú panelové bytové domy a rodinná zástavba v kotline pod Slovenským krasom.",
       responseInfo:
-        "Do Rožňavy jazdíme cez Gemer. Termíny plánujeme s predstihom a zákazky v regióne spájame.",
+        "Do Rožňavy jazdíme cez Rimavskú Sobotu a Gemer. Zákazky v regióne plánujeme ako jednu cestu.",
       localFaq: [
         {
           q: "Poradíte si s murivom na starom banskom námestí?",
@@ -1759,7 +1759,7 @@ const published: City[] = [
       buildingStock:
         "Sobrance sú menšie mesto s prevažujúcou rodinnou zástavbou a menšími bytovými domami. V poľnohospodárskych objektoch v okolí ide najmä o prestupy cez betónové podlahy a steny.",
       responseInfo:
-        "Sobrance patria k najvzdialenejším lokalitám, zákazky tu preto spájame a plánujeme s väčším predstihom.",
+        "Sobrance ležia na krajnom východe pri ukrajinskej hranici. Väčšie objemy prác tu robíme na niekoľko dní po sebe.",
       localFaq: [
         {
           q: "Vŕtate aj v poľnohospodárskych objektoch?",
@@ -1784,7 +1784,7 @@ const published: City[] = [
       buildingStock:
         "Spišská Nová Ves má rozsiahle panelové sídliská a historické jadro s najdlhším šošovkovitým námestím na Slovensku, kde prevažuje hrubé murivo. V okolí Slovenského raja pribúdajú ubytovacie a rekreačné objekty.",
       responseInfo:
-        "Spišskú Novú Ves riešime v rámci spišských výjazdov, termín preto plánujeme dopredu.",
+        "Do Spišskej Novej Vsi jazdíme cez Poprad. Cestu sem spájame s Levočou a Gelnicou.",
       localFaq: [
         {
           q: "Vŕtate v historickom jadre okolo námestia?",
@@ -1809,7 +1809,7 @@ const published: City[] = [
       buildingStock:
         "Trebišov má panelové sídliská, staršiu murovanú zástavbu v centre a rozsiahlu rodinnú zástavbu na rovine. Poľnohospodárske objekty v okolí prinášajú zákazky s prestupmi cez hrubé betónové podlahy a steny.",
       responseInfo:
-        "Trebišov je od najbližšej pobočky vzdialený, zákazky na východe preto spájame do jedného výjazdu.",
+        "Trebišov leží na Zemplíne južne od Michaloviec. Rozsah prác si upresníme telefonicky, aby sme prišli s pripravenou technikou.",
       localFaq: [
         {
           q: "Robíte prestupy v poľnohospodárskych prevádzkach?",

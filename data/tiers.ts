@@ -15,6 +15,9 @@
  * {sluzba} lowercase service name.
  */
 
+import { publishedCities } from "@/data/cities";
+import { cityTier } from "@/lib/geo";
+
 /** 1 = green, 2 = amber, 3 = red. Never the only carrier of meaning — every
  *  dot ships with a text label for screen readers and colour-blind readers. */
 export type MeterLevel = 1 | 2 | 3;
@@ -26,16 +29,27 @@ export interface TierMeters {
 }
 
 export interface TierCopy {
-  /** One sentence above the table. Not a paragraph. */
-  lead: string;
-  /** Low / mid / high. The exact kilometres are deliberately not shown — a
-   *  number invites the visitor to do the "that's too far" arithmetic. */
-  distanceLabel: string;
+  /**
+   * One sentence above the table. Not a paragraph.
+   *
+   * Three interchangeable phrasings per tier, picked from the city slug (see
+   * `tierLead`). Same promise, different words — with 37 towns sharing the
+   * regional tier, a single sentence repeated 74 times across service×city
+   * pages is the kind of boilerplate that flattens a whole page set.
+   */
+  leads: [string, string, string];
+  /**
+   * How available we are here, not how far it is. Same underlying fact, but
+   * "Dostupnosť: nižšia" is a service level a visitor can weigh, whereas
+   * "Vzdialenosť: vyššia" is a reason to stop reading — and kilometres would
+   * only invite them to do the "too far" arithmetic themselves.
+   */
+  availabilityLabel: string;
   /** Traffic-light levels for distance, availability and price. */
   meters: TierMeters;
   /** Who this region's pricing suits best. */
   bestFor: string;
-  /** Lead time and what the distance does to the price. */
+  /** Lead time and, where useful, what suits this region best. */
   rows: { label: string; text: string }[];
   /** Sidebar CTA, so the ask matches the audience. */
   cta: { title: string; text: string };
@@ -47,23 +61,18 @@ export interface TierCopy {
 
 export const tierCopy: Record<string, TierCopy> = {
   local: {
-    lead: "Sme blízko, takže vieme reagovať prakticky okamžite.",
-    distanceLabel: "Nízka",
+    leads: [
+      "Sme blízko, takže vieme reagovať prakticky okamžite.",
+      "Túto oblasť máme na dosah – termín vieme dať prakticky hneď.",
+      "Sme odtiaľto kúsok, väčšinu zákaziek preto stihneme obratom.",
+    ],
+    availabilityLabel: "Dobrá",
     meters: { distance: 1, availability: 1, price: 1 },
-    bestFor:
-      "domácnosti aj firmy – oplatí sa nám prísť aj kvôli jednému prestupu",
+    bestFor: "domácnosti aj firmy – bez minimálnej zákazky",
     rows: [
       {
         label: "Termín",
-        text: "spravidla do 24 hodín, v súrnych prípadoch ešte v ten istý deň",
-      },
-      {
-        label: "Doprava",
-        text: "bez príplatku – prídeme aj kvôli jednému prestupu",
-      },
-      {
-        label: "Obhliadka",
-        text: "zadarmo a nezáväzne, cenu poznáte pred začatím prác",
+        text: "expresné termíny – spravidla do 24 hodín, v súrnych prípadoch ešte v ten istý deň",
       },
     ],
     cta: {
@@ -78,19 +87,19 @@ export const tierCopy: Record<string, TierCopy> = {
   },
 
   regional: {
-    lead: "V tejto oblasti pracujeme pravidelne – termín naplánujeme bez zbytočného odkladu.",
-    distanceLabel: "Stredná",
+    leads: [
+      "V tejto oblasti pracujeme pravidelne – termín naplánujeme bez zbytočného odkladu.",
+      "Do tohto regiónu vyrážame pravidelne, takže termín vieme dohodnúť rýchlo.",
+      "Túto oblasť pokrývame pravidelnými výjazdmi, stačí sa dohodnúť dopredu.",
+    ],
+    availabilityLabel: "Stredná",
     meters: { distance: 2, availability: 2, price: 1 },
     bestFor:
       "firmy a zákazky s viacerými prestupmi naraz – jeden príchod pokryje celú prácu",
     rows: [
       {
         label: "Termín",
-        text: "táto oblasť je od najbližšej pobočky ďalej, termín preto dohadujeme dopredu – zvyčajne v priebehu niekoľkých pracovných dní",
-      },
-      {
-        label: "Doprava",
-        text: "zahrnutá v cenovej ponuke, žiadne prekvapenia na mieste",
+        text: "dohodnutý termín – zvyčajne v priebehu niekoľkých pracovných dní",
       },
     ],
     cta: {
@@ -105,19 +114,19 @@ export const tierCopy: Record<string, TierCopy> = {
   },
 
   project: {
-    lead: "Na väčšie zákazky prídeme kamkoľvek na Slovensku – s vlastnou technikou a záväzným termínom.",
-    distanceLabel: "Vyššia",
+    leads: [
+      "Na väčšie zákazky prídeme kamkoľvek na Slovensku – s vlastnou technikou a záväzným termínom.",
+      "Aj do vzdialenejších regiónov chodíme za väčšími zákazkami, s vlastnou technikou a dohodnutým termínom.",
+      "Pri väčších objemoch prác prídeme kamkoľvek na Slovensku a termín držíme.",
+    ],
+    availabilityLabel: "Nižšia",
     meters: { distance: 3, availability: 2, price: 2 },
     bestFor:
       "stavebné firmy, správcov objektov a väčšie objemy prác",
     rows: [
       {
         label: "Termín",
-        text: "táto oblasť je od najbližšej pobočky najďalej, zákazky v regióne preto spájame a plánujeme dopredu – vieme prísť aj na niekoľko dní po sebe",
-      },
-      {
-        label: "Doprava",
-        text: "zahrnutá v cenovej ponuke – pri väčšom rozsahu sa v cene za kus takmer neprejaví",
+        text: "plánované výjazdy – termín dohodneme dopredu, vieme prísť aj na niekoľko dní po sebe",
       },
     ],
     cta: {
@@ -131,6 +140,42 @@ export const tierCopy: Record<string, TierCopy> = {
     },
   },
 };
+
+/**
+ * Rank of a town inside its own tier, towns sorted by slug. Computed once.
+ *
+ * Round-robin rather than a hash of the slug: hashing spread the 37 regional
+ * towns fine but dealt the 6 non-HQ local ones 4/2/0, so two thirds of the
+ * local pages opened with the same sentence — the exact boilerplate the
+ * variants exist to avoid. Sorting by slug keeps it stable across builds (a
+ * page whose opening line shuffles on every deploy reads as unstable to a
+ * crawler); adding a town only shifts the ones after it alphabetically.
+ */
+const leadRank = (() => {
+  let ranks: Map<string, number> | null = null;
+  return (slug: string): number => {
+    if (!ranks) {
+      ranks = new Map();
+      const byTier = new Map<string, string[]>();
+      for (const c of publishedCities) {
+        const t = cityTier(c);
+        const list = byTier.get(t) ?? [];
+        list.push(c.slug);
+        byTier.set(t, list);
+      }
+      for (const list of byTier.values()) {
+        list.sort();
+        list.forEach((s, i) => ranks!.set(s, i));
+      }
+    }
+    return ranks.get(slug) ?? 0;
+  };
+})();
+
+/** Pick one of a tier's three lead sentences for a given town. */
+export function tierLead(tier: TierCopy, slug: string): string {
+  return tier.leads[leadRank(slug) % tier.leads.length];
+}
 
 /** Replace {mesto} / {km} / {drive} / {sluzba} in tier copy. */
 export function fillTokens(

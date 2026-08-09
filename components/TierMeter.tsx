@@ -32,9 +32,12 @@ const WORDS: Record<
     name: "Vzdialenosť",
     levels: { 1: "nízka", 2: "stredná", 3: "vyššia" },
   },
+  // Same three words as `availabilityLabel` in data/tiers.ts — the tile dot and
+  // the city page's Dostupnosť row describe the same fact and must not use two
+  // different vocabularies for it.
   availability: {
     name: "Dostupnosť",
-    levels: { 1: "do 24 hodín", 2: "po dohode", 3: "po dohode" },
+    levels: { 1: "dobrá", 2: "stredná", 3: "nižšia" },
   },
   price: {
     name: "Cena",
@@ -104,12 +107,12 @@ export function MeterLegend({ className = "" }: { className?: string }) {
           <span className="h-2 w-2 rounded-full bg-ink-200" />
           <span className="h-2 w-2 rounded-full bg-ink-200" />
         </span>
-        zľava: vzdialenosť · dostupnosť · cena
+        vzdialenosť · dostupnosť · cena
       </span>
       <span className="flex items-center gap-3">
         {(
           [
-            ["bg-[#16A34A]", "najlepšia"],
+            ["bg-[#16A34A]", "dobrá"],
             ["bg-[#E0A800]", "stredná"],
             ["bg-[#D2051E]", "nižšia"],
           ] as const
