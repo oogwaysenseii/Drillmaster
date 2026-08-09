@@ -9,6 +9,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { company } from "@/data/company";
+import { GoogleTagManager } from '@next/third-parties/google';
 
 export const metadata: Metadata = {
   metadataBase: new URL(company.url),
@@ -75,6 +76,9 @@ export default function RootLayout({
         <Header />
         <main id="obsah">{children}</main>
         <Footer />
+
+        <GoogleTagManager gtmId="GTM-PZMBJWQP" />
+
       </body>
     </html>
   );
