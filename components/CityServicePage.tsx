@@ -99,7 +99,7 @@ export function CityServicePage({
       />
       <Breadcrumbs items={crumbs} />
 
-      <div className="container grid gap-12 py-10 lg:grid-cols-[minmax(0,880px)_360px] lg:justify-between">
+      <div className="container grid gap-12 py-10 lg:grid-cols-[1fr_360px]">
         <article>
           <h1 className="text-3xl font-extrabold uppercase leading-tight tracking-tight md:text-4xl">
             {service.name} – {city.name} a okolie
