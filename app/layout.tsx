@@ -9,7 +9,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { company } from "@/data/company";
-import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleTagManager } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   metadataBase: new URL(company.url),
@@ -77,8 +77,22 @@ export default function RootLayout({
         <main id="obsah">{children}</main>
         <Footer />
 
-        <GoogleTagManager gtmId="GTM-PZMBJWQP" />
+        {/*
+          Google Tag Manager. Loaded after hydration (the component uses
+          Next's afterInteractive strategy), so it never blocks first paint.
 
+          GTM itself sets no cookies — it is a tag loader. Cookies arrive with
+          whatever you put IN the container: GA4, Ads, Meta. Before adding any
+          of those, the consent layer has to be in place, because EEA visitors
+          need prior consent and Google wants Consent Mode v2 signals.
+
+          The container id is public by design (it ships in the HTML on every
+          site that uses GTM), so hardcoding it leaks nothing. The cost is
+          that it also fires on localhost during development; if that starts
+          polluting reports, move the id to NEXT_PUBLIC_GTM_ID and render this
+          only when the variable is set.
+        */}
+        <GoogleTagManager gtmId="GTM-PZMBJWQP" />
       </body>
     </html>
   );

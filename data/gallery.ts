@@ -36,13 +36,60 @@ export interface GalleryItem {
    * false claim about where you've worked. Photos without a city still appear
    * everywhere — they're just not attributed to a town.
    *
-   * Currently set only for the three photos whose original filenames on
-   * drillmaster.sk named the city. The rest are unknown — fill them in.
+   * The 2026 batch below is attributed from the original filenames, which
+   * carried the job and the town. The older photos below them were attributed
+   * earlier from the drillmaster.sk filenames — worth a second look before
+   * relying on them, since only some of those names actually named a town.
    */
   city?: string;
 }
 
 export const gallery: GalleryItem[] = [
+  // ---- 2026 jobs. City is known for all six (the originals were filed under
+  // the job name and town), which is what makes them worth having: Žiar nad
+  // Hronom and Detva had no local photo at all before these.
+  {
+    src: "/galeria/jadrove-vrtanie-prestupov-pre-klimatizaciu-zvolen.webp",
+    alt: "Jadrové vŕtanie dvoch prestupov pre klimatizáciu v administratívnej budove vo Zvolene",
+    caption: "Prestupy pre klimatizáciu",
+    category: "jadrove-vrtanie",
+    city: "zvolen",
+  },
+  {
+    src: "/galeria/jadrove-vrtanie-prestupu-pre-komin-zvolen.webp",
+    alt: "Jadrové vŕtanie prestupu s priemerom 300 mm pre komín v reštaurácii vo Zvolene",
+    caption: "Prestup pre komín, 300 mm",
+    category: "jadrove-vrtanie",
+    city: "zvolen",
+  },
+  {
+    src: "/galeria/jadrove-vrtanie-prestupov-pre-klimatizaciu-ziar-nad-hronom.webp",
+    alt: "Jadrové vŕtanie prestupu 200 mm pre klimatizáciu cez zateplenú fasádu v Žiari nad Hronom",
+    caption: "Prestup cez zateplenú fasádu",
+    category: "jadrove-vrtanie",
+    city: "ziar-nad-hronom",
+  },
+  {
+    src: "/galeria/jadrove-vrtanie-prestupu-pre-klimatizaciu-na-terase-ziar-nad-hronom.webp",
+    alt: "Hotový prestup pre klimatizáciu vyvŕtaný z terasy bytu v Žiari nad Hronom",
+    caption: "Hotový prestup na terase",
+    category: "jadrove-vrtanie",
+    city: "ziar-nad-hronom",
+  },
+  {
+    src: "/galeria/jadrove-vrtanie-prestupu-pre-kanalizaciu-do-monolitickeho-muru-banska-bystrica.webp",
+    alt: "Jadrové vŕtanie prestupu pre kanalizáciu do monolitického betónového múru v Banskej Bystrici",
+    caption: "Prestup pre kanalizáciu v monolite",
+    category: "jadrove-vrtanie",
+    city: "banska-bystrica",
+  },
+  {
+    src: "/galeria/jadrove-vrtanie-prestupov-pre-rekuperaciu-detva.webp",
+    alt: "Jadrové vŕtanie prestupov pre rekuperáciu do železobetónového stropu v Detve",
+    caption: "Prestupy pre rekuperáciu",
+    category: "jadrove-vrtanie",
+    city: "detva",
+  },
   {
     src: "/galeria/jadrove-vrtanie-prestupov-do-kamena.webp",
     alt: "Jadrové vŕtanie prestupov do kameňa diamantovou vŕtačkou",
