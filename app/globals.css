@@ -8,6 +8,20 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/*
+ * Container side padding.
+ *
+ * Tailwind's container takes a fixed padding value; this scales it with the
+ * viewport instead, so the gutter grows on a wide window without the content
+ * ever touching the edge on a narrow one. Declared after @tailwind components,
+ * so it wins over the plugin's padding at equal specificity.
+ *   390px  -> 16px      1440px -> 43px      1920px -> 40px (capped)
+ */
+.container {
+  padding-left: clamp(1rem, 3vw, 2.5rem);
+  padding-right: clamp(1rem, 3vw, 2.5rem);
+}
+
 html {
   scroll-behavior: smooth;
 }

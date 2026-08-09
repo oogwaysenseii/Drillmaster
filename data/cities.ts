@@ -76,11 +76,11 @@ const published: City[] = [
     geo: { lat: 48.7395, lng: 19.1453 },
     content: {
       localIntro:
-        "Banská Bystrica je od najbližšej pobočky vzdialená približne 20 minút jazdy, takže jadrové vŕtanie aj rezanie otvorov tu vieme zabezpečiť rýchlo a bez príplatkov za dopravu na väčšie vzdialenosti. Pracujeme v celom meste vrátane sídlisk Sásová, Fončorda a Radvaň.",
+        "Banská Bystrica patrí k našim najrýchlejšie dostupným lokalitám, takže jadrové vŕtanie aj rezanie otvorov tu vieme zabezpečiť rýchlo a bez príplatkov za dopravu na väčšie vzdialenosti. Pracujeme v celom meste vrátane sídlisk Sásová, Fončorda a Radvaň.",
       buildingStock:
         "V Banskej Bystrici prevažujú rozsiahle panelové sídliská, kde riešime prestupy pre klimatizácie a rozvody a rezanie bytových jadier. K tomu pristupuje historické jadro s tehlovým a zmiešaným murivom a administratívne budovy, kde je potrebné pracovať bez narušenia prevádzky.",
       responseInfo:
-        "Do Banskej Bystrice je to po R1 necelú polhodinu. Pri menších zákazkách vieme obhliadku spojiť priamo s realizáciou, takže vás nezdržia dve návštevy.",
+        "Do Banskej Bystrice jazdíme po R1. Pri menších zákazkách vieme obhliadku spojiť priamo s realizáciou, takže vás nezdržia dve návštevy.",
       localFaq: [
         {
           q: "Vŕtate na sídliskách ako Sásová alebo Fončorda?",
@@ -88,7 +88,7 @@ const published: City[] = [
         },
         {
           q: "Ako rýchlo sa k nám dostanete?",
-          a: "Banská Bystrica je od nás asi dvadsať minút, takže patrí k lokalitám, kde vieme reagovať prakticky okamžite – obhliadku aj realizáciu často stihneme v ten istý deň.",
+          a: "Banská Bystrica patrí k lokalitám, kde vieme reagovať prakticky okamžite – obhliadku aj realizáciu často stihneme v ten istý deň.",
         },
       ],
     },
@@ -229,7 +229,7 @@ const published: City[] = [
       buildingStock:
         "V Detve nájdeme panelové bytové domy zo 70. a 80. rokov postavené súbežne s rozvojom miestneho strojárskeho priemyslu, k tomu rozsiahlu rodinnú zástavbu a typické podpolianske usadlosti v okolitých obciach, kde sa často stretávame s kamenným murivom a starými betónovými základmi.",
       responseInfo:
-        "Detva leží na hlavnom ťahu na Podpoľanie, pár minút od nás. Presný čas príchodu vieme potvrdiť deň vopred.",
+        "Detva leží na hlavnom ťahu na Podpoľanie. Presný čas príchodu vieme potvrdiť deň vopred.",
       localFaq: [
         {
           q: "Vŕtate aj v objektoch miestneho strojárskeho priemyslu?",
@@ -706,7 +706,7 @@ const published: City[] = [
       buildingStock:
         "Prievidza má rozsiahle panelové sídliská z obdobia rozmachu baníctva na hornej Nitre, k tomu staršiu murovanú zástavbu v centre. Priemyselné a energetické objekty v okolí prinášajú zákazky s hrubým železobetónom a podlahovými rezmi.",
       responseInfo:
-        "Do Prievidze je to cez Žiar nad Hronom a Handlovú necelú hodinu. Pri menších zákazkách vieme obhliadku spojiť priamo s realizáciou.",
+        "Do Prievidze jazdíme cez Žiar nad Hronom a Handlovú. Pri menších zákazkách vieme obhliadku spojiť priamo s realizáciou.",
       localFaq: [
         {
           q: "Vŕtate na sídliskách na hornej Nitre?",
@@ -1057,7 +1057,7 @@ const published: City[] = [
       buildingStock:
         "Martin má rozsiahle panelové sídliská postavené pre zamestnancov ťažkého strojárstva a k tomu historické jadro. Priemyselné areály v meste prinášajú zákazky s veľmi hrubým železobetónom, kde je potrebná výkonná diamantová technika.",
       responseInfo:
-        "Do Martina je to cez Kremnicu a Turčianske Teplice zhruba hodinu. Pri menších zákazkách vieme obhliadku spojiť s realizáciou.",
+        "Do Martina jazdíme cez Kremnicu a Turčianske Teplice. Zákazky v Turci spájame do jednej cesty.",
       localFaq: [
         {
           q: "Vŕtate v objektoch ťažkého strojárstva?",

@@ -32,8 +32,16 @@ const config: Config = {
       },
       container: {
         center: true,
+        // Padding is set in globals.css with a clamp() so it scales with the
+        // viewport; this is only the floor for anything that misses that rule.
         padding: "1rem",
-        screens: { "2xl": "1240px" },
+        // ONE entry on purpose. Tailwind's container uses each entry as
+        // "from this viewport, cap at this width", so declaring the whole
+        // sm/md/lg/xl ladder makes the container step down to 1024 between
+        // 1024 and the next breakpoint — which ADDS side padding on exactly
+        // the mid-size windows most people browse in. With a single entry the
+        // container is fluid all the way up and only caps at the end.
+        screens: { "2xl": "1520px" },
       },
     },
   },

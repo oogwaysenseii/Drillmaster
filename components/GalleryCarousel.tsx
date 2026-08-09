@@ -166,8 +166,17 @@ export function GalleryCarousel({
                   src={item.src}
                   alt={item.alt}
                   fill
-                  quality={78}
-                  sizes="(max-width: 640px) 78vw, (max-width: 768px) 48vw, (max-width: 1024px) 32vw, 25vw"
+                  quality={76}
+                  // These tiles are 4:5, but most photos are 4:3 landscape.
+                  // `object-cover` then scales the image to fill the HEIGHT,
+                  // so the image renders 1.67x wider than the tile and spills
+                  // out of view on both sides. `sizes` describes the tile, so
+                  // the browser was fetching for the tile width and the result
+                  // was upscaled 1.29x — visibly soft on every landscape photo.
+                  // Widths below are the tile widths multiplied by that 1.67
+                  // crop factor. Portrait photos are unaffected: for them the
+                  // width governs and the extra is simply not requested.
+                  sizes="(max-width: 640px) 130vw, (max-width: 768px) 80vw, (max-width: 1024px) 54vw, 40vw"
                   className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.07]"
                 />
 

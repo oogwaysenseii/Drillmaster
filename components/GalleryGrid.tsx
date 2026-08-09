@@ -64,7 +64,7 @@ export function GalleryGrid() {
                   src={item.src}
                   alt={item.alt}
                   fill
-                  quality={80}
+                  quality={86}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
                 />

@@ -11,8 +11,13 @@
  *   regional ≤2 h      → planned dates, cheaper per hole in batches
  *   project  >2 h      → we travel, transport disappears into a larger job
  *
- * Tokens resolved by the page: {mesto} locative ("v Detve"), {km}, {drive},
- * {sluzba} lowercase service name.
+ * Tokens resolved by the page: {mesto} locative ("v Detve") and {sluzba},
+ * the lowercase service name.
+ *
+ * There is deliberately NO {km} or {drive} token. The site states availability
+ * as Dobrá/Stredná/Nižšia and never a figure, so the exact distance is not
+ * made available to templates at all — if it were, it would eventually end up
+ * in copy again.
  */
 
 import { publishedCities } from "@/data/cities";
@@ -177,14 +182,12 @@ export function tierLead(tier: TierCopy, slug: string): string {
   return tier.leads[leadRank(slug) % tier.leads.length];
 }
 
-/** Replace {mesto} / {km} / {drive} / {sluzba} in tier copy. */
+/** Replace {mesto} / {sluzba} in tier copy. */
 export function fillTokens(
   template: string,
-  vars: { mesto: string; km: number; drive: string; sluzba: string }
+  vars: { mesto: string; sluzba: string }
 ): string {
   return template
     .replace(/\{mesto\}/g, vars.mesto)
-    .replace(/\{km\}/g, String(vars.km))
-    .replace(/\{drive\}/g, vars.drive)
     .replace(/\{sluzba\}/g, vars.sluzba);
 }

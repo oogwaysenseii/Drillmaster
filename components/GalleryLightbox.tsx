@@ -143,7 +143,7 @@ export function GalleryLightbox({
             alt={item.alt}
             fill
             sizes="(max-width: 768px) 92vw, 900px"
-            quality={85}
+            quality={90}
             className="object-contain"
             priority
           />

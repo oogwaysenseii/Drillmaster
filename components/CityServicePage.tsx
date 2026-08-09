@@ -5,7 +5,7 @@ import { getService, services } from "@/data/services";
 import { getCity, publishedCities } from "@/data/cities";
 import { company } from "@/data/company";
 import { galleryByCategory, type GalleryCategory } from "@/data/gallery";
-import { roadDistanceKm, drivePhrase, cityTier } from "@/lib/geo";
+import { cityTier } from "@/lib/geo";
 import { tierCopy, fillTokens, tierLead } from "@/data/tiers";
 import { MeterDot } from "@/components/TierMeter";
 import { JsonLd } from "@/components/JsonLd";
@@ -74,14 +74,10 @@ export function CityServicePage({
 
   // Real, per-city facts — the thing that stops these pages reading as one
   // template with the name swapped.
-  const km = roadDistanceKm(city);
-  const drive = drivePhrase(city);
   const tier = tierCopy[cityTier(city)];
   const fill = (t: string) =>
     fillTokens(t, {
       mesto: city.nameLocative,
-      km,
-      drive,
       sluzba: service.name.toLowerCase(),
     });
 
@@ -103,7 +99,7 @@ export function CityServicePage({
       />
       <Breadcrumbs items={crumbs} />
 
-      <div className="container grid gap-12 py-10 lg:grid-cols-[1fr_360px]">
+      <div className="container grid gap-12 py-10 lg:grid-cols-[minmax(0,880px)_360px] lg:justify-between">
         <article>
           <h1 className="text-3xl font-extrabold uppercase leading-tight tracking-tight md:text-4xl">
             {service.name} – {city.name} a okolie

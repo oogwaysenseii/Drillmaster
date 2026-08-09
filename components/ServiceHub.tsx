@@ -74,7 +74,7 @@ export function ServiceHub({ slug }: { slug: string }) {
       />
       <Breadcrumbs items={crumbs} />
 
-      <div className="container grid gap-12 py-10 lg:grid-cols-[1fr_360px]">
+      <div className="container grid gap-12 py-10 lg:grid-cols-[minmax(0,880px)_360px] lg:justify-between">
         <article>
           <h1 className="text-3xl font-extrabold uppercase leading-tight tracking-tight md:text-4xl">
             {page?.h1 ?? service.title}
